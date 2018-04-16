@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="icones_mapa">#E0E0E0</color>
+    <color name="fundo_cinza">#1C1C1C</color>
+    <color name="texto_fundo_edit">#4F4F4F</color>
+</resources>
