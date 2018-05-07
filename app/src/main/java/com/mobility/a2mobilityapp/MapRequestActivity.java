@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -26,12 +27,39 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.api.client.auth.oauth2.Credential;
 import com.mobility.a2mobilityapp.project.bean.Endereco;
+import com.mobility.a2mobilityapp.project.services.UberOperation;
 import com.mobility.a2mobilityapp.project.utils.HttpDataHandler;
+import com.uber.sdk.android.core.UberSdk;
+import com.uber.sdk.android.core.auth.AccessTokenManager;
+import com.uber.sdk.android.rides.RideParameters;
+import com.uber.sdk.core.auth.Scope;
+import com.uber.sdk.rides.auth.OAuth2Credentials;
+import com.uber.sdk.rides.client.CredentialsSession;
+import com.uber.sdk.rides.client.ServerTokenSession;
+import com.uber.sdk.rides.client.SessionConfiguration;
+import com.uber.sdk.rides.client.UberRidesApi;
+import com.uber.sdk.rides.client.model.Product;
+import com.uber.sdk.rides.client.model.ProductsResponse;
+import com.uber.sdk.rides.client.model.RideEstimate;
+import com.uber.sdk.rides.client.model.RideRequestParameters;
+import com.uber.sdk.rides.client.services.RidesService;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
+import java.util.List;
+
+import retrofit2.Response;
+
+import static java.lang.Double.parseDouble;
+import static java.lang.Float.*;
+import static java.lang.Thread.sleep;
 
 public class MapRequestActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -43,51 +71,59 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     private static final float DEFAULT_ZOOM = 15f;
+
+    private static final String CLIENT_ID = "C1XE2gLTeq8SceiauMX8cdKvFTkxoSwZ";
+    private static final String REDIRECT_URI = "http://www.google.com.br";
     private EditText enderecoInicial;
     private EditText enderecoFinal;
     private Button btnCompara;
     protected Integer comparativo;
-    protected Endereco endereco;
-    protected EditText latIni;
-    protected EditText lonIni;
-    protected EditText latFin;
-    protected EditText lonFin;
-
+    private Button btnImprimi;
+    private Endereco endereco;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_request);
         getLocationPermission();
-
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                    .permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         //geo-localizacao
         enderecoInicial = findViewById(R.id.edit_origem);
         enderecoFinal = findViewById(R.id.edit_destino);
         btnCompara = findViewById(R.id.btn_comparar);
-        latIni = findViewById(R.id.lat_ini);
-        lonIni = findViewById(R.id.lon_ini);
-        latFin = findViewById(R.id.lat_fin);
-        lonFin = findViewById(R.id.lon_fin);
+
 
         btnCompara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                endereco = new Endereco();
-                comparativo = 0;
-                new GetCoordinates().execute(enderecoInicial.getText().toString().replace(" ","+"));
+                runOnUiThread(new Runnable(){
+                    public void run() {
+                        endereco = new Endereco();
+                        endereco.setNominalPartida(enderecoInicial.getText().toString());
+                        endereco.setNominalChegada(enderecoFinal.getText().toString());
+                        chamaUber();
+                    }
+                });
 
-                endereco.setLatitudePartida(latIni.getText().toString());
-                endereco.setLongitudePartida(lonIni.getText().toString());
-                comparativo = 1;
-                new GetCoordinates().execute(enderecoFinal.getText().toString().replace(" ","+"));
-                endereco.setLatitudePartida(latFin.getText().toString());
-                endereco.setLongitudeChegada(lonFin.getText().toString());
-                System.out.println("Endereco:\n"+"Lat_ini:"+endereco.getLatitudePartida());
+            }
+        });
+    }
 
+    public void chamaUber(){
+        runOnUiThread(new Runnable(){
+            public void run() {
+                UberOperation uberOperation = new UberOperation();
+                uberOperation.chamaLatitudeLongitude(endereco);
+                String response = uberOperation.getProductsUber(Double.parseDouble(endereco.getLatitudePartida()),Double.parseDouble(endereco.getLongitudePartida()));
+                //System.out.println(response);
             }
         });
 
     }
+
+
 
     public void onMapReady(GoogleMap googleMap) {
         Toast.makeText(this, "Map está iniciado", Toast.LENGTH_SHORT).show();
@@ -115,6 +151,7 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
         mapFragment.getMapAsync(MapRequestActivity.this);
     }
     private void getLocationPermission() {
+
         Log.d(TAG, "getLocationPermission: coletando permissão de localização");
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION};
@@ -142,34 +179,40 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
     }
     private void getDeviceLocation(){
-        Log.d(TAG, "getDeviceLocation: getting the devices current location");
 
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        runOnUiThread(new Runnable(){
+            public void run() {
+                Log.d(TAG, "getDeviceLocation: getting the devices current location");
 
-        try{
-            if(mLocationPermissionGranted){
+                mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(MapRequestActivity.this);
 
-                final Task location = mFusedLocationProviderClient.getLastLocation();
-                location.addOnCompleteListener(new OnCompleteListener() {
-                    @Override
-                    public void onComplete(@NonNull Task task) {
-                        if(task.isSuccessful()){
-                            Log.d(TAG, "onComplete: found location!");
-                            Location currentLocation = (Location) task.getResult();
+                try{
+                    if(mLocationPermissionGranted){
 
-                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
-                                    DEFAULT_ZOOM);
+                        final Task location = mFusedLocationProviderClient.getLastLocation();
+                        location.addOnCompleteListener(new OnCompleteListener() {
+                            @Override
+                            public void onComplete(@NonNull Task task) {
+                                if(task.isSuccessful()){
+                                    Log.d(TAG, "onComplete: found location!");
+                                    Location currentLocation = (Location) task.getResult();
 
-                        }else{
-                            Log.d(TAG, "onComplete: current location is null");
-                            Toast.makeText(MapRequestActivity.this, "unable to get current location", Toast.LENGTH_SHORT).show();
-                        }
+                                    moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
+                                            DEFAULT_ZOOM);
+
+                                }else{
+                                    Log.d(TAG, "onComplete: current location is null");
+                                    Toast.makeText(MapRequestActivity.this, "unable to get current location", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                     }
-                });
+                }catch (SecurityException e){
+                    Log.e(TAG, "getDeviceLocation: SecurityException: " + e.getMessage() );
+                }
             }
-        }catch (SecurityException e){
-            Log.e(TAG, "getDeviceLocation: SecurityException: " + e.getMessage() );
-        }
+        });
+
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -194,60 +237,7 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
             }
         }
     }
-    private class GetCoordinates extends AsyncTask<String,Void,String> {
-
-        ProgressDialog dialog = new ProgressDialog(MapRequestActivity.this);
-        private String latitude;
-        private String longitude;
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            dialog.setMessage("Please wait....");
-            dialog.setCanceledOnTouchOutside(false);
-            dialog.show();
-        }
-
-        @Override
-        protected String doInBackground(String... strings) {
-            String response;
-            try{
-                String address = strings[0];
-                HttpDataHandler http = new HttpDataHandler();
-                String url = String.format("https://maps.googleapis.com/maps/api/geocode/json?address=%s",address);
-                response = http.getHttpData(url);
-                return  response;
-            }catch (Exception ex){
-
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            try{
-                JSONObject jsonObject = new JSONObject(s);
-
-                String lat = ((JSONArray)jsonObject.get("results")).getJSONObject(0).getJSONObject("geometry")
-                        .getJSONObject("location").get("lat").toString();
-                String lng = ((JSONArray)jsonObject.get("results")).getJSONObject(0).getJSONObject("geometry")
-                        .getJSONObject("location").get("lng").toString();
 
 
-                    latIni.setText(lat);
-                    lonIni.setText(lng);
-                    enderecoInicial.setText(lat);
-                    latFin.setText(lat);
-                    lonFin.setText(lng);
 
-
-                if(dialog.isShowing()){
-                    dialog.dismiss();
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
 }
