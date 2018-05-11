@@ -4,11 +4,14 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +19,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -29,7 +33,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.api.client.auth.oauth2.Credential;
 import com.mobility.a2mobilityapp.project.bean.Endereco;
+import com.mobility.a2mobilityapp.project.bean.MeioTransporte;
+import com.mobility.a2mobilityapp.project.bean.TransportePublico;
+import com.mobility.a2mobilityapp.project.bean.Uber;
+import com.mobility.a2mobilityapp.project.services.TransporteOperation;
 import com.mobility.a2mobilityapp.project.services.UberOperation;
+import com.mobility.a2mobilityapp.project.utils.FragmentList;
 import com.mobility.a2mobilityapp.project.utils.HttpDataHandler;
 import com.uber.sdk.android.core.UberSdk;
 import com.uber.sdk.android.core.auth.AccessTokenManager;
@@ -52,6 +61,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -61,7 +71,7 @@ import static java.lang.Double.parseDouble;
 import static java.lang.Float.*;
 import static java.lang.Thread.sleep;
 
-public class MapRequestActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapRequestActivity extends AppCompatActivity implements OnMapReadyCallback ,FragmentList.OnFragmentInteractionListener{
 
     private Boolean mLocationPermissionGranted = false;
     private GoogleMap mMap;
@@ -71,15 +81,16 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     private static final float DEFAULT_ZOOM = 15f;
-
-    private static final String CLIENT_ID = "C1XE2gLTeq8SceiauMX8cdKvFTkxoSwZ";
-    private static final String REDIRECT_URI = "http://www.google.com.br";
     private EditText enderecoInicial;
     private EditText enderecoFinal;
     private Button btnCompara;
     protected Integer comparativo;
     private Button btnImprimi;
     private Endereco endereco;
+    private Uber[] uber;
+    private FrameLayout fragmentContainer;
+    private ArrayList<MeioTransporte> listaMeios = new ArrayList<>();
+    TransportePublico transpPublico = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -93,7 +104,7 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
         enderecoInicial = findViewById(R.id.edit_origem);
         enderecoFinal = findViewById(R.id.edit_destino);
         btnCompara = findViewById(R.id.btn_comparar);
-
+        fragmentContainer = (FrameLayout) findViewById(R.id.fragment_container);
 
         btnCompara.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +115,10 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
                         endereco.setNominalPartida(enderecoInicial.getText().toString());
                         endereco.setNominalChegada(enderecoFinal.getText().toString());
                         chamaUber();
+                        TransporteOperation transp = new TransporteOperation();
+                        String resposta = transp.getValuesTransport(endereco);
+                        transpPublico = transp.getTransporte(resposta);
+                        openFragment();
                     }
                 });
 
@@ -111,13 +126,22 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
         });
     }
 
+    public void openFragment(){
+        FragmentList fragmentList = FragmentList.newInstance("1", "2",uber,transpPublico);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction =  fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right,
+                android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.add(R.id.fragment_container, fragmentList, "LIST_FRAGMENT").commit();
+    }
     public void chamaUber(){
         runOnUiThread(new Runnable(){
             public void run() {
                 UberOperation uberOperation = new UberOperation();
                 uberOperation.chamaLatitudeLongitude(endereco);
-                String response = uberOperation.getProductsUber(Double.parseDouble(endereco.getLatitudePartida()),Double.parseDouble(endereco.getLongitudePartida()));
-                //System.out.println(response);
+                String response = uberOperation.getValuesUber(endereco);
+                uber = uberOperation.valoresUber(response);
             }
         });
 
@@ -197,8 +221,8 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
                                     Log.d(TAG, "onComplete: found location!");
                                     Location currentLocation = (Location) task.getResult();
 
-                                    moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
-                                            DEFAULT_ZOOM);
+                                    //moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
+                                      //      DEFAULT_ZOOM);
 
                                 }else{
                                     Log.d(TAG, "onComplete: current location is null");
@@ -239,5 +263,8 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
     }
 
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
+    }
 }

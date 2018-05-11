@@ -14,10 +14,10 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyC-XMLyjEVIORydWrpj4Y4vvbjSfiB3gFY" />
+            android:value="AIzaSyDMJL4Q-GJD2FVVAb6gTgLtJsI7iIXTUos" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyC-XMLyjEVIORydWrpj4Y4vvbjSfiB3gFY" />
+            android:value="AIzaSyDMJL4Q-GJD2FVVAb6gTgLtJsI7iIXTUos" />
         <activity android:name=".MapRequestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
