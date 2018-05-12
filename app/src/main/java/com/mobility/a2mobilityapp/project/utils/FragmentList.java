@@ -75,7 +75,9 @@ public class FragmentList extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static FragmentList newInstance(String param1, String param2, Uber[] uber, TransportePublico transportePublico) {
         FragmentList fragment = new FragmentList();
-        listaMeios.add(setTransportePublico(transportePublico));
+        if(transportePublico.getPreco() != null || transportePublico.getTempo() != null){
+            listaMeios.add(setTransportePublico(transportePublico));
+        }
         for(int i=0;i<uber.length-1;i++){
             MeioTransporte transporte = new MeioTransporte();
             transporte.setCategoria(uber[i].getDisplay_name());
