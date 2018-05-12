@@ -89,8 +89,8 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
     private Boolean mLocationPermissionGranted = false;
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
-    //private static final String TAG = "MapActivity";
-    private static final String TAG = "MapRequestActivity";
+    private static final String TAG = "MapActivity";
+    //private static final String TAG = "MapRequestActivity";
     private static final String FINAL_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
@@ -159,14 +159,13 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
                 .addConnectionCallbacks(this)
                 .build();
 
-        enderecoInicial.setOnItemClickListener(mAutocompleteClickListener);
         mPlaceArrayAdapter = new PlaceArrayAdapter(this, android.R.layout.simple_list_item_1,
                 BOUNDS_MOUNTAIN_VIEW, null);
+
+        enderecoInicial.setOnItemClickListener(mAutocompleteClickListener);
         enderecoInicial.setAdapter(mPlaceArrayAdapter);
 
         enderecoFinal.setOnItemClickListener(mAutocompleteClickListener);
-        mPlaceArrayAdapter = new PlaceArrayAdapter(this, android.R.layout.simple_list_item_1,
-                BOUNDS_MOUNTAIN_VIEW, null);
         enderecoFinal.setAdapter(mPlaceArrayAdapter);
     }
 
@@ -311,6 +310,7 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
     public void onFragmentInteraction(Uri uri) {
 
     }
+
 
     //AutoComplete
     private AdapterView.OnItemClickListener mAutocompleteClickListener
