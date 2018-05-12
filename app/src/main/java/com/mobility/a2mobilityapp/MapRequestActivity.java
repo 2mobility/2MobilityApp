@@ -17,18 +17,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceBuffer;
+import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.api.client.auth.oauth2.Credential;
@@ -36,6 +47,7 @@ import com.mobility.a2mobilityapp.project.bean.Endereco;
 import com.mobility.a2mobilityapp.project.bean.MeioTransporte;
 import com.mobility.a2mobilityapp.project.bean.TransportePublico;
 import com.mobility.a2mobilityapp.project.bean.Uber;
+import com.mobility.a2mobilityapp.project.services.PlaceArrayAdapter;
 import com.mobility.a2mobilityapp.project.services.TransporteOperation;
 import com.mobility.a2mobilityapp.project.services.UberOperation;
 import com.mobility.a2mobilityapp.project.utils.FragmentList;
@@ -71,18 +83,22 @@ import static java.lang.Double.parseDouble;
 import static java.lang.Float.*;
 import static java.lang.Thread.sleep;
 
-public class MapRequestActivity extends AppCompatActivity implements OnMapReadyCallback ,FragmentList.OnFragmentInteractionListener{
+public class MapRequestActivity extends AppCompatActivity implements OnMapReadyCallback ,FragmentList.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener,
+        GoogleApiClient.ConnectionCallbacks{
 
     private Boolean mLocationPermissionGranted = false;
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
-    private static final String TAG = "MapActivity";
+    //private static final String TAG = "MapActivity";
+    private static final String TAG = "MapRequestActivity";
     private static final String FINAL_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     private static final float DEFAULT_ZOOM = 15f;
-    private EditText enderecoInicial;
-    private EditText enderecoFinal;
+    //private EditText enderecoInicial
+    //private EditText enderecoFinal;
+    private AutoCompleteTextView enderecoInicial;
+    private AutoCompleteTextView enderecoFinal;
     private Button btnCompara;
     protected Integer comparativo;
     private Button btnImprimi;
@@ -91,6 +107,13 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
     private FrameLayout fragmentContainer;
     private ArrayList<MeioTransporte> listaMeios = new ArrayList<>();
     TransportePublico transpPublico = null;
+
+    //AutoComplete
+    private static final int GOOGLE_API_CLIENT_ID = 0;
+    private GoogleApiClient mGoogleApiClient;
+    private PlaceArrayAdapter mPlaceArrayAdapter;
+    private static final LatLngBounds BOUNDS_MOUNTAIN_VIEW = new LatLngBounds(
+            new LatLng(37.398160, -122.180831), new LatLng(37.430610, -121.972090));
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -101,10 +124,31 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
                     .permitAll().build();
         StrictMode.setThreadPolicy(policy);
         //geo-localizacao
-        enderecoInicial = findViewById(R.id.edit_origem);
-        enderecoFinal = findViewById(R.id.edit_destino);
+        enderecoInicial = (AutoCompleteTextView) findViewById(R.id.edit_origem);
+        //determina apartir de qual letra ele começa a pesquisar
+        enderecoInicial.setThreshold(3);
+        enderecoFinal = (AutoCompleteTextView) findViewById(R.id.edit_destino);
+        //determina apartir de qual letra ele começa a pesquisar
+        enderecoFinal.setThreshold(3);
         btnCompara = findViewById(R.id.btn_comparar);
         fragmentContainer = (FrameLayout) findViewById(R.id.fragment_container);
+
+        //AutoComplete
+        mGoogleApiClient = new GoogleApiClient.Builder(MapRequestActivity.this)
+                .addApi(Places.GEO_DATA_API)
+                .enableAutoManage(this, GOOGLE_API_CLIENT_ID, this)
+                .addConnectionCallbacks(this)
+                .build();
+
+        enderecoInicial.setOnItemClickListener(mAutocompleteClickListener);
+        mPlaceArrayAdapter = new PlaceArrayAdapter(this, android.R.layout.simple_list_item_1,
+                null, null);
+        enderecoInicial.setAdapter(mPlaceArrayAdapter);
+
+        enderecoFinal.setOnItemClickListener(mAutocompleteClickListener);
+        mPlaceArrayAdapter = new PlaceArrayAdapter(this, android.R.layout.simple_list_item_1,
+                BOUNDS_MOUNTAIN_VIEW, null);
+        enderecoFinal.setAdapter(mPlaceArrayAdapter);
 
         btnCompara.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -265,6 +309,62 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    //AutoComplete
+    private AdapterView.OnItemClickListener mAutocompleteClickListener
+            = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            final PlaceArrayAdapter.PlaceAutocomplete item = mPlaceArrayAdapter.getItem(position);
+            final String placeId = String.valueOf(item.placeId);
+            Log.i(TAG, "Selected: " + item.description);
+            PendingResult<PlaceBuffer> placeResult = Places.GeoDataApi.getPlaceById(mGoogleApiClient, placeId);
+            placeResult.setResultCallback(mUpdatePlaceDetailsCallback);
+            Log.i(TAG, "Fetching details for ID: " + item.placeId);
+        }
+    };
+
+    private ResultCallback<PlaceBuffer> mUpdatePlaceDetailsCallback = new ResultCallback<PlaceBuffer>() {
+        @Override
+        public void onResult(PlaceBuffer places) {
+            if (!places.getStatus().isSuccess()) {
+                Log.e(TAG, "Place query did not complete. Error: " +
+                        places.getStatus().toString());
+                return;
+            }
+            // Selecting the first object buffer.
+            final Place place = places.get(0);
+            CharSequence attributions = places.getAttributions();
+        }
+    };
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+        mPlaceArrayAdapter.setGoogleApiClient(mGoogleApiClient);
+        Log.i(TAG, "Google Places API connected.");
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        mPlaceArrayAdapter.setGoogleApiClient(null);
+        Log.e(TAG, "Google Places API connection suspended.");
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+        Log.e(TAG, "Google Places API connection failed with error code: "
+                + connectionResult.getErrorCode());
+
+        Toast.makeText(this,
+                "Google Places API connection failed with error code:" +
+                        connectionResult.getErrorCode(),
+                Toast.LENGTH_LONG).show();
 
     }
 }
