@@ -133,23 +133,6 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
         btnCompara = findViewById(R.id.btn_comparar);
         fragmentContainer = (FrameLayout) findViewById(R.id.fragment_container);
 
-        //AutoComplete
-        mGoogleApiClient = new GoogleApiClient.Builder(MapRequestActivity.this)
-                .addApi(Places.GEO_DATA_API)
-                .enableAutoManage(this, GOOGLE_API_CLIENT_ID, this)
-                .addConnectionCallbacks(this)
-                .build();
-
-        enderecoInicial.setOnItemClickListener(mAutocompleteClickListener);
-        mPlaceArrayAdapter = new PlaceArrayAdapter(this, android.R.layout.simple_list_item_1,
-                null, null);
-        enderecoInicial.setAdapter(mPlaceArrayAdapter);
-
-        enderecoFinal.setOnItemClickListener(mAutocompleteClickListener);
-        mPlaceArrayAdapter = new PlaceArrayAdapter(this, android.R.layout.simple_list_item_1,
-                BOUNDS_MOUNTAIN_VIEW, null);
-        enderecoFinal.setAdapter(mPlaceArrayAdapter);
-
         btnCompara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -168,6 +151,23 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
 
             }
         });
+
+        //AutoComplete
+        mGoogleApiClient = new GoogleApiClient.Builder(MapRequestActivity.this)
+                .addApi(Places.GEO_DATA_API)
+                .enableAutoManage(this, GOOGLE_API_CLIENT_ID, this)
+                .addConnectionCallbacks(this)
+                .build();
+
+        enderecoInicial.setOnItemClickListener(mAutocompleteClickListener);
+        mPlaceArrayAdapter = new PlaceArrayAdapter(this, android.R.layout.simple_list_item_1,
+                BOUNDS_MOUNTAIN_VIEW, null);
+        enderecoInicial.setAdapter(mPlaceArrayAdapter);
+
+        enderecoFinal.setOnItemClickListener(mAutocompleteClickListener);
+        mPlaceArrayAdapter = new PlaceArrayAdapter(this, android.R.layout.simple_list_item_1,
+                BOUNDS_MOUNTAIN_VIEW, null);
+        enderecoFinal.setAdapter(mPlaceArrayAdapter);
     }
 
     public void openFragment(){
