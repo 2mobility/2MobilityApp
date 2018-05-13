@@ -1,11 +1,10 @@
 package com.mobility.a2mobilityapp;
 
 import android.Manifest;
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,12 +16,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -42,7 +40,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.api.client.auth.oauth2.Credential;
 import com.mobility.a2mobilityapp.project.bean.Endereco;
 import com.mobility.a2mobilityapp.project.bean.MeioTransporte;
 import com.mobility.a2mobilityapp.project.bean.TransportePublico;
@@ -51,37 +48,7 @@ import com.mobility.a2mobilityapp.project.services.PlaceArrayAdapter;
 import com.mobility.a2mobilityapp.project.services.TransporteOperation;
 import com.mobility.a2mobilityapp.project.services.UberOperation;
 import com.mobility.a2mobilityapp.project.utils.FragmentList;
-import com.mobility.a2mobilityapp.project.utils.HttpDataHandler;
-import com.uber.sdk.android.core.UberSdk;
-import com.uber.sdk.android.core.auth.AccessTokenManager;
-import com.uber.sdk.android.rides.RideParameters;
-import com.uber.sdk.core.auth.Scope;
-import com.uber.sdk.rides.auth.OAuth2Credentials;
-import com.uber.sdk.rides.client.CredentialsSession;
-import com.uber.sdk.rides.client.ServerTokenSession;
-import com.uber.sdk.rides.client.SessionConfiguration;
-import com.uber.sdk.rides.client.UberRidesApi;
-import com.uber.sdk.rides.client.model.Product;
-import com.uber.sdk.rides.client.model.ProductsResponse;
-import com.uber.sdk.rides.client.model.RideEstimate;
-import com.uber.sdk.rides.client.model.RideRequestParameters;
-import com.uber.sdk.rides.client.services.RidesService;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import retrofit2.Response;
-
-import static java.lang.Double.parseDouble;
-import static java.lang.Float.*;
-import static java.lang.Thread.sleep;
 
 public class MapRequestActivity extends AppCompatActivity implements OnMapReadyCallback ,FragmentList.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener,
         GoogleApiClient.ConnectionCallbacks{
@@ -138,6 +105,10 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
             public void onClick(View view) {
                 runOnUiThread(new Runnable(){
                     public void run() {
+                        //Fecha o teclado apos clicar no botão
+                        ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
+                                .hideSoftInputFromWindow(enderecoInicial.getWindowToken(), 0);
+
                         endereco = new Endereco();
                         endereco.setNominalPartida(enderecoInicial.getText().toString());
                         endereco.setNominalChegada(enderecoFinal.getText().toString());
