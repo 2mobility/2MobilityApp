@@ -14,7 +14,10 @@ import org.json.JSONObject;
 
 public class TransporteOperation {
 
-    private static final String API_KEY="AIzaSyDMJL4Q-GJD2FVVAb6gTgLtJsI7iIXTUos";
+    //Antiga
+    //private static final String API_KEY="AIzaSyDMJL4Q-GJD2FVVAb6gTgLtJsI7iIXTUos";
+    //Nova
+    private static final String API_KEY="AIzaSyCgKbvt68jWIyBgWkj64tnm2DTBHpubZwA";
 
     public String getValuesTransport(Endereco endereco){
         HttpDataHandler http = new HttpDataHandler();

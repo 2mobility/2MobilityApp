@@ -29,8 +29,11 @@ import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.AutocompletePrediction;
+import com.google.android.gms.location.places.GeoDataClient;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.PlaceBuffer;
+import com.google.android.gms.location.places.PlaceBufferResponse;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -44,14 +47,14 @@ import com.mobility.a2mobilityapp.project.bean.Endereco;
 import com.mobility.a2mobilityapp.project.bean.MeioTransporte;
 import com.mobility.a2mobilityapp.project.bean.TransportePublico;
 import com.mobility.a2mobilityapp.project.bean.Uber;
-import com.mobility.a2mobilityapp.project.services.PlaceArrayAdapter;
 import com.mobility.a2mobilityapp.project.services.TransporteOperation;
 import com.mobility.a2mobilityapp.project.services.UberOperation;
 import com.mobility.a2mobilityapp.project.utils.FragmentList;
+import com.mobility.a2mobilityapp.project.utils.PlaceAutocompleteAdapter;
+
 import java.util.ArrayList;
 
-public class MapRequestActivity extends AppCompatActivity implements OnMapReadyCallback ,FragmentList.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener,
-        GoogleApiClient.ConnectionCallbacks{
+public class MapRequestActivity extends AppCompatActivity implements OnMapReadyCallback ,FragmentList.OnFragmentInteractionListener{
 
     private Boolean mLocationPermissionGranted = false;
     private GoogleMap mMap;
@@ -76,11 +79,10 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
     TransportePublico transpPublico = null;
 
     //AutoComplete
-    private static final int GOOGLE_API_CLIENT_ID = 0;
-    private GoogleApiClient mGoogleApiClient;
-    private PlaceArrayAdapter mPlaceArrayAdapter;
-    private static final LatLngBounds BOUNDS_MOUNTAIN_VIEW = new LatLngBounds(
-            new LatLng(37.398160, -122.180831), new LatLng(37.430610, -121.972090));
+    protected GeoDataClient mGeoDataClient;
+    private PlaceAutocompleteAdapter mAdapter;
+    private static final LatLngBounds BOUNDS_GREATER_SYDNEY = new LatLngBounds(
+            new LatLng(-34.041458, 150.790100), new LatLng(-33.682247, 151.383362));
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -99,6 +101,16 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
         enderecoFinal.setThreshold(3);
         btnCompara = findViewById(R.id.btn_comparar);
         fragmentContainer = (FrameLayout) findViewById(R.id.fragment_container);
+
+        //AutoComplete
+        mGeoDataClient = Places.getGeoDataClient(this, null);
+
+        enderecoInicial.setOnItemClickListener(mAutocompleteClickListener);
+        enderecoFinal.setOnItemClickListener(mAutocompleteClickListener);
+
+        mAdapter = new PlaceAutocompleteAdapter(this, mGeoDataClient, BOUNDS_GREATER_SYDNEY, null);
+        enderecoInicial.setAdapter(mAdapter);
+        enderecoFinal.setAdapter(mAdapter);
 
         btnCompara.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,22 +134,6 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
 
             }
         });
-
-        //AutoComplete
-        mGoogleApiClient = new GoogleApiClient.Builder(MapRequestActivity.this)
-                .addApi(Places.GEO_DATA_API)
-                .enableAutoManage(this, GOOGLE_API_CLIENT_ID, this)
-                .addConnectionCallbacks(this)
-                .build();
-
-        mPlaceArrayAdapter = new PlaceArrayAdapter(this, android.R.layout.simple_list_item_1,
-                BOUNDS_MOUNTAIN_VIEW, null);
-
-        enderecoInicial.setOnItemClickListener(mAutocompleteClickListener);
-        enderecoInicial.setAdapter(mPlaceArrayAdapter);
-
-        enderecoFinal.setOnItemClickListener(mAutocompleteClickListener);
-        enderecoFinal.setAdapter(mPlaceArrayAdapter);
     }
 
     public void openFragment(){
@@ -284,58 +280,21 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
 
 
     //AutoComplete
-    private AdapterView.OnItemClickListener mAutocompleteClickListener
-            = new AdapterView.OnItemClickListener() {
+    private AdapterView.OnItemClickListener mAutocompleteClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            final PlaceArrayAdapter.PlaceAutocomplete item = mPlaceArrayAdapter.getItem(position);
-            final String placeId = String.valueOf(item.placeId);
-            Log.i(TAG, "Selected: " + item.description);
-            PendingResult<PlaceBuffer> placeResult = Places.GeoDataApi.getPlaceById(mGoogleApiClient, placeId);
-            placeResult.setResultCallback(mUpdatePlaceDetailsCallback);
-            Log.i(TAG, "Fetching details for ID: " + item.placeId);
+            final AutocompletePrediction item = mAdapter.getItem(position);
+            final String placeId = item.getPlaceId();
+            final CharSequence primaryText = item.getPrimaryText(null);
+
+            Log.i(TAG, "Autocomplete item selected: " + primaryText);
+
+            Task<PlaceBufferResponse> placeResult = mGeoDataClient.getPlaceById(placeId);
+
+            Toast.makeText(getApplicationContext(), "Clicked: " + primaryText,
+                    Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "Called getPlaceById to get Place details for " + placeId);
         }
     };
-
-    private ResultCallback<PlaceBuffer> mUpdatePlaceDetailsCallback = new ResultCallback<PlaceBuffer>() {
-        @Override
-        public void onResult(PlaceBuffer places) {
-            if (!places.getStatus().isSuccess()) {
-                Log.e(TAG, "Place query did not complete. Error: " +
-                        places.getStatus().toString());
-                return;
-            }
-            // Selecting the first object buffer.
-            final Place place = places.get(0);
-            CharSequence attributions = places.getAttributions();
-        }
-    };
-
-    @Override
-    public void onConnected(@Nullable Bundle bundle) {
-
-        mPlaceArrayAdapter.setGoogleApiClient(mGoogleApiClient);
-        Log.i(TAG, "Google Places API connected.");
-
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-        mPlaceArrayAdapter.setGoogleApiClient(null);
-        Log.e(TAG, "Google Places API connection suspended.");
-    }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-        Log.e(TAG, "Google Places API connection failed with error code: "
-                + connectionResult.getErrorCode());
-
-        Toast.makeText(this,
-                "Google Places API connection failed with error code:" +
-                        connectionResult.getErrorCode(),
-                Toast.LENGTH_LONG).show();
-
-    }
 }

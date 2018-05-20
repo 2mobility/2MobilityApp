@@ -28,7 +28,10 @@ import java.util.List;
 public class UberOperation {
 
     private static final String SERVER_TOKEN = "zSDb9Z2xJ4V8HEczMfkhEEgfEn9afNiO-OkQJiTs";
-    private static final String API_KEY="AIzaSyDMJL4Q-GJD2FVVAb6gTgLtJsI7iIXTUos";
+    //Antiga
+    //private static final String API_KEY="AIzaSyDMJL4Q-GJD2FVVAb6gTgLtJsI7iIXTUos";
+    //Nova
+    private static final String API_KEY="AIzaSyCgKbvt68jWIyBgWkj64tnm2DTBHpubZwA";
 
     public String getProductsUber(float latitude, float longitude){
        HttpDataHandler http = new HttpDataHandler();
