@@ -7,7 +7,7 @@ package com.mobility.a2mobilityapp.project.bean;
 public class MeioTransporte {
 
     private String nome;
-    private String categoria;
+    private String distancia;
     private String preco;
     private String tempo;
     private Integer imagem;
@@ -20,12 +20,12 @@ public class MeioTransporte {
         this.nome = nome;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getDistancia() {
+        return distancia;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setDistancia(String distancia) {
+        this.distancia = distancia;
     }
 
     public String getPreco() {

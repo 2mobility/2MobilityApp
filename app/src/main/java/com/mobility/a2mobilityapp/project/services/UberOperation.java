@@ -1,11 +1,6 @@
 package com.mobility.a2mobilityapp.project.services;
 
-import com.google.api.client.json.JsonObjectParser;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.reflect.TypeToken;
-import com.mobility.a2mobilityapp.R;
 import com.mobility.a2mobilityapp.project.bean.Endereco;
 import com.mobility.a2mobilityapp.project.bean.Uber;
 import com.mobility.a2mobilityapp.project.utils.HttpDataHandler;
@@ -13,13 +8,6 @@ import com.mobility.a2mobilityapp.project.utils.HttpDataHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.Reader;
-import java.io.StringReader;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by limjo15 on 5/6/2018.

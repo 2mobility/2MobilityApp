@@ -1,7 +1,10 @@
 package com.mobility.a2mobilityapp;
 
+
+
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
@@ -17,29 +20,50 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.AutocompletePrediction;
+import com.google.android.gms.location.places.GeoDataClient;
+import com.google.android.gms.location.places.PlaceBufferResponse;
+import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.api.client.auth.oauth2.Credential;
+
+
+import java.util.ArrayList;
+
 import com.mobility.a2mobilityapp.project.bean.Endereco;
-import com.mobility.a2mobilityapp.project.bean.MeioTransporte;
 import com.mobility.a2mobilityapp.project.bean.TransportePublico;
 import com.mobility.a2mobilityapp.project.bean.Uber;
 import com.mobility.a2mobilityapp.project.services.TransporteOperation;
 import com.mobility.a2mobilityapp.project.services.UberOperation;
+import com.mobility.a2mobilityapp.project.bean.MeioTransporte;
 import com.mobility.a2mobilityapp.project.utils.FragmentList;
 import com.mobility.a2mobilityapp.project.utils.HttpDataHandler;
+
+
 import com.uber.sdk.android.core.UberSdk;
 import com.uber.sdk.android.core.auth.AccessTokenManager;
 import com.uber.sdk.android.rides.RideParameters;
@@ -65,52 +89,102 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.mobility.a2mobilityapp.project.utils.PlaceAutocompleteAdapter;
 import retrofit2.Response;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Float.*;
 import static java.lang.Thread.sleep;
 
-public class MapRequestActivity extends AppCompatActivity implements OnMapReadyCallback ,FragmentList.OnFragmentInteractionListener{
 
+public class MenuActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, FragmentList.OnFragmentInteractionListener {
+
+    //----Google API
+    private static final String TAG = "Map";
+    //localização aproximada
+    private static final String FINAL_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    //localização exata
+    private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
+
+
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
+    private static final float DEFAULT_ZOOM = 15f;
+    //variaveis
     private Boolean mLocationPermissionGranted = false;
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
-    private static final String TAG = "MapActivity";
-    private static final String FINAL_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
-    private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
-    private static final float DEFAULT_ZOOM = 15f;
-    private EditText enderecoInicial;
-    private EditText enderecoFinal;
+
+
+    //----ListView
+    private FrameLayout fragmentContainer;
+    private Button btnComparar;
+
+
+    private AutoCompleteTextView  enderecoInicial;
+    private AutoCompleteTextView  enderecoFinal;
     private Button btnCompara;
     protected Integer comparativo;
     private Button btnImprimi;
     private Endereco endereco;
     private Uber[] uber;
-    private FrameLayout fragmentContainer;
     private ArrayList<MeioTransporte> listaMeios = new ArrayList<>();
     TransportePublico transpPublico = null;
 
+    //AutoComplete
+    protected GeoDataClient mGeoDataClient;
+    private PlaceAutocompleteAdapter mAdapter;
+    private static final LatLngBounds BOUNDS_GREATER_SYDNEY = new LatLngBounds(
+            new LatLng(-34.041458, 150.790100), new LatLng(-33.682247, 151.383362));
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map_request);
+        setContentView(R.layout.activity_menu);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        //----Google API
         getLocationPermission();
+
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                    .permitAll().build();
+                .permitAll().build();
         StrictMode.setThreadPolicy(policy);
         //geo-localizacao
-        enderecoInicial = findViewById(R.id.edit_origem);
-        enderecoFinal = findViewById(R.id.edit_destino);
+        enderecoInicial = (AutoCompleteTextView) findViewById(R.id.edit_origem);
+        enderecoFinal = (AutoCompleteTextView)  findViewById(R.id.edit_destino);
         btnCompara = findViewById(R.id.btn_comparar);
         fragmentContainer = (FrameLayout) findViewById(R.id.fragment_container);
+
+        //AutoComplete
+        mGeoDataClient = Places.getGeoDataClient(this, null);
+
+        enderecoInicial.setOnItemClickListener(mAutocompleteClickListener);
+        enderecoFinal.setOnItemClickListener(mAutocompleteClickListener);
+
+        mAdapter = new PlaceAutocompleteAdapter(this, mGeoDataClient, BOUNDS_GREATER_SYDNEY, null);
+        enderecoInicial.setAdapter(mAdapter);
+        enderecoFinal.setAdapter(mAdapter);
 
         btnCompara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 runOnUiThread(new Runnable(){
                     public void run() {
+                        //Fecha o teclado apos clicar no botão
+                        ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
+                                .hideSoftInputFromWindow(enderecoInicial.getWindowToken(), 0);
+
                         endereco = new Endereco();
                         endereco.setNominalPartida(enderecoInicial.getText().toString());
                         endereco.setNominalChegada(enderecoFinal.getText().toString());
@@ -135,6 +209,8 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.add(R.id.fragment_container, fragmentList, "LIST_FRAGMENT").commit();
     }
+
+
     public void chamaUber(){
         runOnUiThread(new Runnable(){
             public void run() {
@@ -147,10 +223,74 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
 
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_camera) {
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 
 
+
+    //------Métodos para Google API
+    @Override
     public void onMapReady(GoogleMap googleMap) {
-        Toast.makeText(this, "Map está iniciado", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Map está iniciado", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onMapReady: map está iniciado");
         mMap = googleMap;
 
@@ -169,13 +309,44 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
             //mMap.getUiSettings().setMyLocationButtonEnabled(false);
         }
     }
-    private void initMap() {
-        Log.d(TAG, "initMap: Inicializando Map");
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(MapRequestActivity.this);
-    }
-    private void getLocationPermission() {
 
+
+    private void getDeviceLocation(){
+        runOnUiThread(new Runnable(){
+            public void run() {
+                Log.d(TAG, "getDeviceLocation: getting the devices current location");
+
+                mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(MenuActivity.this);
+
+                try{
+                    if(mLocationPermissionGranted){
+
+                        final Task location = mFusedLocationProviderClient.getLastLocation();
+                        location.addOnCompleteListener(new OnCompleteListener() {
+                            @Override
+                            public void onComplete(@NonNull Task task) {
+                                if(task.isSuccessful()){
+                                    Log.d(TAG, "onComplete: found location!");
+                                    Location currentLocation = (Location) task.getResult();
+
+                                    moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
+                                            DEFAULT_ZOOM);
+
+                                }else{
+                                    Log.d(TAG, "onComplete: current location is null");
+                                    Toast.makeText(MenuActivity.this, "unable to get current location", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                }catch (SecurityException e){
+                    Log.e(TAG, "getDeviceLocation: SecurityException: " + e.getMessage() );
+                }
+            }
+        });
+    }
+
+    private void getLocationPermission() {
         Log.d(TAG, "getLocationPermission: coletando permissão de localização");
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION};
@@ -198,46 +369,19 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
                     LOCATION_PERMISSION_REQUEST_CODE);
         }
     }
+
     private void moveCamera(LatLng latLng, float zoom){
         Log.d(TAG, "moveCamera: movendo a camera para: latitude: " + latLng.latitude + ", longitude: " + latLng.longitude);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
     }
-    private void getDeviceLocation(){
 
-        runOnUiThread(new Runnable(){
-            public void run() {
-                Log.d(TAG, "getDeviceLocation: getting the devices current location");
-
-                mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(MapRequestActivity.this);
-
-                try{
-                    if(mLocationPermissionGranted){
-
-                        final Task location = mFusedLocationProviderClient.getLastLocation();
-                        location.addOnCompleteListener(new OnCompleteListener() {
-                            @Override
-                            public void onComplete(@NonNull Task task) {
-                                if(task.isSuccessful()){
-                                    Log.d(TAG, "onComplete: found location!");
-                                    Location currentLocation = (Location) task.getResult();
-
-                                    //moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
-                                      //      DEFAULT_ZOOM);
-
-                                }else{
-                                    Log.d(TAG, "onComplete: current location is null");
-                                    Toast.makeText(MapRequestActivity.this, "unable to get current location", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-                    }
-                }catch (SecurityException e){
-                    Log.e(TAG, "getDeviceLocation: SecurityException: " + e.getMessage() );
-                }
-            }
-        });
-
+    private void initMap() {
+        Log.d(TAG, "initMap: Inicializando Map");
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(MenuActivity.this);
     }
+
+    //request para obeter permissão de localização
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         Log.d(TAG, "onRequestPermissionsResult: Chamado");
@@ -262,9 +406,22 @@ public class MapRequestActivity extends AppCompatActivity implements OnMapReadyC
         }
     }
 
+    //AutoComplete
+    private AdapterView.OnItemClickListener mAutocompleteClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
+            final AutocompletePrediction item = mAdapter.getItem(position);
+            final String placeId = item.getPlaceId();
+            final CharSequence primaryText = item.getPrimaryText(null);
 
-    }
+            Log.i(TAG, "Autocomplete item selected: " + primaryText);
+
+            Task<PlaceBufferResponse> placeResult = mGeoDataClient.getPlaceById(placeId);
+
+            Toast.makeText(getApplicationContext(), "Clicked: " + primaryText,
+                    Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "Called getPlaceById to get Place details for " + placeId);
+        }
+    };
 }

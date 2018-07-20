@@ -1,4 +1,12 @@
 <resources>
+    <string name="google_key">AIzaSyDl8xZqqEhSB_d0jwQevG3s6Y711jgKP0U</string>
     <string name="app_name">2MobilityApp</string>
-    <string name="google_key">AIzaSyDMJL4Q-GJD2FVVAb6gTgLtJsI7iIXTUos</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">2MobilityApp</string>
+    <string name="nav_header_subtitle">mobilityapp@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Teste</string>
 </resources>
