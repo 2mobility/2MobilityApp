@@ -32,6 +32,8 @@
         <activity
             android:name=".MenuActivity"
             android:theme="@style/AppTheme" />
+        <activity android:name=".project.view.CadastroPessoaActivity" />
+        <activity android:name=".project.view.SenhaActivity"></activity>
     </application>
 
 </manifest>

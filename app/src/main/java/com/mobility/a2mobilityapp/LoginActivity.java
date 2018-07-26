@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.mobility.a2mobilityapp.project.view.CadastroPessoaActivity;
+import com.mobility.a2mobilityapp.project.view.SenhaActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -31,7 +33,9 @@ public class LoginActivity extends AppCompatActivity {
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Cadastrar! Construindo...", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Cadastrar! Construindo...", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, CadastroPessoaActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -39,7 +43,9 @@ public class LoginActivity extends AppCompatActivity {
         txtEsqueceuSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Esqueceu a senha! Construindo...", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, SenhaActivity.class);
+                startActivity(intent);
+                //Toast.makeText(getApplicationContext(), "Esqueceu a senha! Construindo...", Toast.LENGTH_SHORT).show();
             }
         });
     }
