@@ -18,11 +18,10 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        android:text="data"
+        android:hint="Confirmar nova senha"
         android:textColor="#ffffff"
         tools:layout_editor_absoluteX="14dp"
-        tools:layout_editor_absoluteY="114dp"
-        tools:text="Confirmar nova senha" />
+        tools:layout_editor_absoluteY="114dp" />
 
     <EditText
         android:id="@+id/editText16"
@@ -35,11 +34,10 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        android:text="data"
+        android:hint="Nova Senha"
         android:textColor="#ffffff"
         tools:layout_editor_absoluteX="14dp"
-        tools:layout_editor_absoluteY="114dp"
-        tools:text="Nova Senha" />
+        tools:layout_editor_absoluteY="114dp" />
 
     <EditText
         android:id="@+id/editText15"
@@ -52,11 +50,10 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        android:text="data"
+        android:hint="E-mail"
         android:textColor="#ffffff"
         tools:layout_editor_absoluteX="14dp"
-        tools:layout_editor_absoluteY="114dp"
-        tools:text="E-mail" />
+        tools:layout_editor_absoluteY="114dp" />
 
     <EditText
         android:id="@+id/editText14"
@@ -69,11 +66,10 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        android:text="data"
         android:textColor="#ffffff"
         tools:layout_editor_absoluteX="14dp"
         tools:layout_editor_absoluteY="114dp"
-        tools:text="CPF" />
+        android:hint="CPF" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -113,11 +109,10 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        android:text="data"
         android:textColor="#ffffff"
         tools:layout_editor_absoluteX="14dp"
         tools:layout_editor_absoluteY="114dp"
-        tools:text="Data de nascimento" />
+        android:hint="Data de nascimento" />
 
     <Button
         android:id="@+id/button"

@@ -65,6 +65,7 @@ import com.mobility.a2mobilityapp.project.utils.HttpDataHandler;
 
 
 import com.mobility.a2mobilityapp.project.view.CadastroAutomovelFragment;
+import com.mobility.a2mobilityapp.project.view.MeusAutomoveisFragment;
 import com.mobility.a2mobilityapp.project.view.PerfilFragment;
 import com.uber.sdk.android.core.UberSdk;
 import com.uber.sdk.android.core.auth.AccessTokenManager;
@@ -274,7 +275,7 @@ public class MenuActivity extends AppCompatActivity
             PerfilFragment perfil = new PerfilFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_conteudo, perfil).commit();
         } else if (id == R.id.nav_automovel) {
-            CadastroAutomovelFragment automovel = new CadastroAutomovelFragment();
+            MeusAutomoveisFragment automovel = new MeusAutomoveisFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_conteudo, automovel).commit();
         } else if (id == R.id.nav_local) {
 

@@ -18,11 +18,11 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        android:text="Email"
+        android:hint="E-mail@email.com"
         android:textColor="#ffffff"
         tools:layout_editor_absoluteX="14dp"
         tools:layout_editor_absoluteY="114dp"
-        tools:text="igorgode@gmail.com" />
+        />
 
     <EditText
         android:id="@+id/editText7"
@@ -36,11 +36,11 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        android:text="Cpf"
+        android:hint="111.111.111-11"
         android:textColor="#ffffff"
         tools:layout_editor_absoluteX="14dp"
-        tools:layout_editor_absoluteY="173dp"
-        tools:text="439.973.448-50" />
+        tools:layout_editor_absoluteY="173dp"/>
+
 
     <TextView
         android:id="@+id/textView2"
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/editText7"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="35dp"
         android:text="Meu Perfil"
         android:textColor="#319a29"
         android:textSize="30dp"
@@ -67,11 +67,10 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        android:text="Name"
+        android:hint="Fulano de Tal"
         android:textColor="#ffffff"
         tools:layout_editor_absoluteX="14dp"
-        tools:layout_editor_absoluteY="114dp"
-        tools:text="Igor André da Silveira" />
+        tools:layout_editor_absoluteY="114dp"/>
 
     <EditText
         android:id="@+id/editText9"
@@ -83,8 +82,8 @@
         android:background="#313131"
         android:ems="10"
         android:inputType="phone"
+        android:hint="(11) 9898-17270"
         android:paddingLeft="10dp"
-        android:text="(11) 9898-17270"
         android:textColor="#ffffff" />
 
     <EditText
@@ -99,7 +98,7 @@
         android:focusable="false"
         android:inputType="date"
         android:paddingLeft="10dp"
-        android:text="16/01/1997"
+        android:hint="16/01/1997"
         android:textColor="#ffffff" />
 
     <Button

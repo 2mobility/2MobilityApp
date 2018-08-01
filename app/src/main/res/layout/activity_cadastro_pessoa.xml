@@ -5,58 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".project.view.CadastroPessoaActivity"
-    android:background="@drawable/cadastro">
-
-    <EditText
-        android:id="@+id/editText8"
-        android:layout_width="331dp"
-        android:layout_height="44dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="122dp"
-        android:background="#313131"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:text="Confirmar Senha"
-        android:textColor="#ffffff"
-        tools:layout_editor_absoluteX="15dp"
-        tools:layout_editor_absoluteY="414dp"
-        tools:text="Confirmar Senha" />
+    android:background="@drawable/cadastro"    >
 
     <EditText
         android:id="@+id/editText6"
         android:layout_width="331dp"
-        android:layout_height="44dp"
+        android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="183dp"
+        android:layout_marginBottom="256dp"
         android:background="#313131"
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        android:text="Senha"
         android:textColor="#ffffff"
         tools:layout_editor_absoluteX="15dp"
         tools:layout_editor_absoluteY="354dp"
-        tools:text="Senha" />
+        android:hint="Senha"/>
+
+    <EditText
+        android:id="@+id/editText8"
+        android:layout_width="331dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="216dp"
+        android:background="#313131"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:textColor="#ffffff"
+        tools:layout_editor_absoluteX="15dp"
+        tools:layout_editor_absoluteY="414dp"
+        android:hint="Confirmar Senha"/>
+
 
     <EditText
         android:id="@+id/editText5"
         android:layout_width="331dp"
-        android:layout_height="44dp"
-        android:layout_alignParentBottom="true"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="239dp"
+        android:layout_marginTop="239dp"
         android:background="#313131"
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        android:text="Email"
         android:textColor="#ffffff"
         tools:layout_editor_absoluteX="15dp"
         tools:layout_editor_absoluteY="294dp"
-        tools:text="Email" />
+        android:hint="E-mail"
+        />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -73,7 +72,7 @@
         android:id="@+id/textView"
         android:layout_width="161dp"
         android:layout_height="43dp"
-        android:layout_alignBottom="@+id/imageView2"
+        android:layout_marginTop="35dp"
         android:layout_alignEnd="@+id/editText8"
         android:text="Cadastre-se"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -85,69 +84,65 @@
     <EditText
         android:id="@+id/editText"
         android:layout_width="332dp"
-        android:layout_height="44dp"
+        android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="109dp"
+        android:layout_marginTop="115dp"
         android:background="#313131"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="none"
         android:paddingLeft="10dp"
-        android:text="Name"
         android:textColor="#ffffff"
         tools:layout_editor_absoluteX="14dp"
         tools:layout_editor_absoluteY="114dp"
-        tools:text="Nome" />
+        android:hint="Nome"/>
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="195dp"
-        android:layout_height="44dp"
+        android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/editText8"
-        android:layout_marginTop="167dp"
+        android:layout_marginTop="155dp"
         android:background="#313131"
         android:ems="10"
         android:inputType="phone"
         android:paddingLeft="10dp"
-        android:text="Cel"
         android:textColor="#ffffff"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="174dp"
-        tools:text="Cel" />
+        android:hint="Cel"/>
 
     <EditText
         android:id="@+id/editText3"
         android:layout_width="128dp"
-        android:layout_height="44dp"
-        android:layout_alignEnd="@+id/editText4"
+        android:layout_height="30dp"
+        android:layout_alignEnd="@+id/editText8"
         android:layout_alignTop="@+id/editText2"
         android:background="#313131"
         android:ems="10"
         android:inputType="date"
         android:paddingLeft="10dp"
-        android:text="dd/mm/aaaa"
         android:textColor="#ffffff"
         tools:layout_editor_absoluteX="216dp"
         tools:layout_editor_absoluteY="174dp"
-        tools:text="dd/mm/aaaa" />
+        android:hint="dd/mm/aaaa"/>
 
     <EditText
         android:id="@+id/editText4"
         android:layout_width="331dp"
-        android:layout_height="44dp"
+        android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="226dp"
+        android:layout_marginTop="196dp"
         android:background="#313131"
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        android:text="CPF"
         android:textColor="#ffffff"
         tools:layout_editor_absoluteX="15dp"
         tools:layout_editor_absoluteY="234dp"
-        tools:text="CPF" />
+        android:hint="CPF"/>
 
     <Button
         android:id="@+id/button"
@@ -162,5 +157,50 @@
         tools:layout_editor_absoluteX="104dp"
         tools:layout_editor_absoluteY="490dp"
         tools:text="CONCLUIR" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/editText8"
+        android:layout_marginBottom="187dp"
+        android:text="Possui Automovel?"
+        android:textColor="#ffffff" />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/editText8"
+        android:layout_marginBottom="149dp" />
+
+    <!--<RadioGroup
+        android:id="@+id/radioGrupo"
+        android:layout_width="327dp"
+        android:layout_height="77dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="97dp">
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sim"
+            android:textColor="#ffffff" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="Não"
+            android:textColor="#ffffff" />
+
+    </RadioGroup>-->
 
 </RelativeLayout>
