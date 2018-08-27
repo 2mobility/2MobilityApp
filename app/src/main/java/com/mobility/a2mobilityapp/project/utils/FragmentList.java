@@ -12,6 +12,7 @@ import android.widget.SimpleAdapter;
 
 import com.mobility.a2mobilityapp.R;
 import com.mobility.a2mobilityapp.project.bean.MeioTransporte;
+import com.mobility.a2mobilityapp.project.bean.Particular;
 import com.mobility.a2mobilityapp.project.bean.TransportePublico;
 import com.mobility.a2mobilityapp.project.bean.Uber;
 
@@ -55,13 +56,17 @@ public class FragmentList extends Fragment {
      * @return A new instance of fragment FragmentList.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentList newInstance(String param1, String param2, Uber[] uber, TransportePublico transportePublico) {
+    public static FragmentList newInstance(String param1, String param2, Uber[] uber, TransportePublico transportePublico, Particular particular) {
         FragmentList fragment = new FragmentList();
+
+        //Transporte publico
         if(transportePublico.getPreco() != null || transportePublico.getTempo() != null){
             String precoTransporte = "R$" + transportePublico.getPreco();
             transportePublico.setPreco(precoTransporte );
             listaMeios.add(setTransportePublico(transportePublico));
         }
+
+        //Uber
         for(int i=0;i<uber.length-1;i++){
             MeioTransporte transporte = new MeioTransporte();
             transporte.setDistancia(Float.toString(uber[i].getDistance()) + " km");
@@ -69,6 +74,16 @@ public class FragmentList extends Fragment {
             transporte.setPreco(uber[i].getEstimate());
             int tempoUber = uber[i].getDuration() / 60;
             transporte.setTempo(tempoUber + " mins");
+            listaMeios.add(transporte);
+        }
+
+        //Carro Particular
+        if(particular.getPreco() != null || particular.getTempo() != null){
+            MeioTransporte transporte = new MeioTransporte();
+            transporte.setDistancia(particular.getDistancia() + " km");
+            transporte.setNome("Carro Particular");
+            transporte.setPreco("R$" + particular.getPreco());
+            transporte.setTempo(particular.getTempo() + " mins");
             listaMeios.add(transporte);
         }
 

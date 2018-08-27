@@ -28,10 +28,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".MenuActivity"> </activity>
         <activity android:name=".LoginActivity" />
-        <activity
+        <!--<activity
             android:name=".MenuActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme" />-->
         <activity android:name=".project.view.CadastroPessoaActivity" />
         <activity android:name=".project.view.SenhaActivity"></activity>
     </application>

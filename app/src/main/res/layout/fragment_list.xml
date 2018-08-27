@@ -6,11 +6,13 @@
     tools:context=".project.utils.FragmentList"
     android:background="#ffffff"
     android:clickable="true"
-    android:id="@+id/relative_fragment">
+    android:id="@+id/relative_fragment"
+    >
 
     <ListView
         android:id="@+id/list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        />
 
 </RelativeLayout>

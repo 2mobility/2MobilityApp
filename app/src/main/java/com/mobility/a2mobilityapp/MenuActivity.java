@@ -6,6 +6,8 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -19,6 +21,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.LogPrinter;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -39,7 +42,9 @@ import android.view.MenuItem;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.AutocompletePrediction;
 import com.google.android.gms.location.places.GeoDataClient;
+import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.PlaceBufferResponse;
+import com.google.android.gms.location.places.PlaceDetectionClient;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -55,8 +60,10 @@ import com.google.android.gms.tasks.Task;
 import java.util.ArrayList;
 
 import com.mobility.a2mobilityapp.project.bean.Endereco;
+import com.mobility.a2mobilityapp.project.bean.Particular;
 import com.mobility.a2mobilityapp.project.bean.TransportePublico;
 import com.mobility.a2mobilityapp.project.bean.Uber;
+import com.mobility.a2mobilityapp.project.services.ParticularOperation;
 import com.mobility.a2mobilityapp.project.services.TransporteOperation;
 import com.mobility.a2mobilityapp.project.services.UberOperation;
 import com.mobility.a2mobilityapp.project.bean.MeioTransporte;
@@ -91,6 +98,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import com.mobility.a2mobilityapp.project.utils.PlaceAutocompleteAdapter;
 import retrofit2.Response;
@@ -133,6 +141,13 @@ public class MenuActivity extends AppCompatActivity
     private Uber[] uber;
     private ArrayList<MeioTransporte> listaMeios = new ArrayList<>();
     TransportePublico transpPublico = null;
+    Particular particular = null;
+
+
+    LatLng startLatLgn;
+
+    Geocoder geoCoder = new Geocoder(this, Locale.getDefault());
+
 
     //AutoComplete
     protected GeoDataClient mGeoDataClient;
@@ -179,9 +194,14 @@ public class MenuActivity extends AppCompatActivity
         enderecoInicial.setAdapter(mAdapter);
         enderecoFinal.setAdapter(mAdapter);
 
+        //Toast.makeText(this, Auto, Toast.LENGTH_SHORT).show();
+
+
+
         btnCompara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 runOnUiThread(new Runnable(){
                     public void run() {
                         //Fecha o teclado apos clicar no botão
@@ -195,16 +215,24 @@ public class MenuActivity extends AppCompatActivity
                         TransporteOperation transp = new TransporteOperation();
                         String resposta = transp.getValuesTransport(endereco);
                         transpPublico = transp.getTransporte(resposta);
+
+                        ParticularOperation part = new ParticularOperation();
+                        particular = part.getParticular();
+
                         openFragment();
                     }
                 });
 
             }
         });
+
+
+
+
     }
 
     public void openFragment(){
-        FragmentList fragmentList = FragmentList.newInstance("1", "2",uber,transpPublico);
+        FragmentList fragmentList = FragmentList.newInstance("1", "2",uber,transpPublico,particular);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction =  fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right,
@@ -311,7 +339,7 @@ public class MenuActivity extends AppCompatActivity
             }
             mMap.setMyLocationEnabled(true);
             //desabilitar botão de localização
-            //mMap.getUiSettings().setMyLocationButtonEnabled(false);
+            //mMap.getUiSettings().setMyLocationButtonEnabled(true);
         }
     }
 
@@ -336,6 +364,18 @@ public class MenuActivity extends AppCompatActivity
 
                                     moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
                                             DEFAULT_ZOOM);
+
+
+
+
+                                    try{
+                                        List<Address> myAddresses = geoCoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1);
+                                        String address  = myAddresses.get(0).getAddressLine(0);
+                                        String city     = myAddresses.get(0).getLocality();
+                                        Log.d(TAG, "Seu endereço: " + address);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
 
                                 }else{
                                     Log.d(TAG, "onComplete: current location is null");
