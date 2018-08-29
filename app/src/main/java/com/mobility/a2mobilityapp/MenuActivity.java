@@ -5,6 +5,7 @@ package com.mobility.a2mobilityapp;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -222,13 +223,8 @@ public class MenuActivity extends AppCompatActivity
                         openFragment();
                     }
                 });
-
             }
         });
-
-
-
-
     }
 
     public void openFragment(){
@@ -298,20 +294,21 @@ public class MenuActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_mapa) {
-
+            Intent intent = new Intent(this, MenuActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_perfil) {
             PerfilFragment perfil = new PerfilFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_conteudo, perfil).commit();
         } else if (id == R.id.nav_automovel) {
             MeusAutomoveisFragment automovel = new MeusAutomoveisFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_conteudo, automovel).commit();
-        } else if (id == R.id.nav_local) {
+        } /*else if (id == R.id.nav_local) {
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 
-        }
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

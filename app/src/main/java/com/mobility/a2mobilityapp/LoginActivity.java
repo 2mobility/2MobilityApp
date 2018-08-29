@@ -54,10 +54,10 @@ public class LoginActivity extends AppCompatActivity {
     private void init(){
         Button btnEntrar = (Button) findViewById(R.id.btnEntrar);
         btnEntrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                startActivity(intent);
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                        startActivity(intent);
             }
         });
     }
