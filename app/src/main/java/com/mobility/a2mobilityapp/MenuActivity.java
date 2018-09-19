@@ -3,6 +3,7 @@ package com.mobility.a2mobilityapp;
 
 
 import android.Manifest;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -147,7 +148,7 @@ public class MenuActivity extends AppCompatActivity
 
     LatLng startLatLgn;
 
-    Geocoder geoCoder = new Geocoder(this, Locale.getDefault());
+    Geocoder geoCoder;
 
 
     //AutoComplete
@@ -160,6 +161,10 @@ public class MenuActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        //com o geo coder sendo iniciado no onCreate resolve o problema de cair o app
+        geoCoder = new Geocoder(this, Locale.getDefault());
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -197,32 +202,38 @@ public class MenuActivity extends AppCompatActivity
 
         //Toast.makeText(this, Auto, Toast.LENGTH_SHORT).show();
 
+        //geoCoder = new Geocoder(this, Locale.getDefault());
 
 
         btnCompara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                runOnUiThread(new Runnable(){
-                    public void run() {
-                        //Fecha o teclado apos clicar no botão
-                        ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
-                                .hideSoftInputFromWindow(enderecoInicial.getWindowToken(), 0);
+                if((enderecoInicial.getText() + "") != "" && (enderecoFinal.getText() + "") != ""){
+                    runOnUiThread(new Runnable(){
+                        public void run() {
+                            //Fecha o teclado apos clicar no botão
+                            ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
+                                    .hideSoftInputFromWindow(enderecoInicial.getWindowToken(), 0);
 
-                        endereco = new Endereco();
-                        endereco.setNominalPartida(enderecoInicial.getText().toString());
-                        endereco.setNominalChegada(enderecoFinal.getText().toString());
-                        chamaUber();
-                        TransporteOperation transp = new TransporteOperation();
-                        String resposta = transp.getValuesTransport(endereco);
-                        transpPublico = transp.getTransporte(resposta);
+                            endereco = new Endereco();
+                            endereco.setNominalPartida(enderecoInicial.getText().toString());
+                            endereco.setNominalChegada(enderecoFinal.getText().toString());
+                            chamaUber();
+                            TransporteOperation transp = new TransporteOperation();
+                            String resposta = transp.getValuesTransport(endereco);
+                            transpPublico = transp.getTransporte(resposta);
 
-                        ParticularOperation part = new ParticularOperation();
-                        particular = part.getParticular();
+                            ParticularOperation part = new ParticularOperation();
+                            particular = part.getParticular();
 
-                        openFragment();
-                    }
-                });
+                            openFragment();
+                        }
+                    });
+                }else{
+                    enderecoInicial.setText("Else");
+                    enderecoFinal.setText("Else");
+                }
             }
         });
     }
