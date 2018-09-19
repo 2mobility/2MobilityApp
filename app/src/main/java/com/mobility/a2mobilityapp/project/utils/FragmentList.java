@@ -67,14 +67,16 @@ public class FragmentList extends Fragment {
         }
 
         //Uber
-        for(int i=0;i<uber.length-1;i++){
-            MeioTransporte transporte = new MeioTransporte();
-            transporte.setDistancia(Float.toString(uber[i].getDistance()) + " km");
-            transporte.setNome(uber[i].getDisplay_name());
-            transporte.setPreco(uber[i].getEstimate());
-            int tempoUber = uber[i].getDuration() / 60;
-            transporte.setTempo(tempoUber + " mins");
-            listaMeios.add(transporte);
+        if(uber != null){
+            for(int i=0;i<uber.length-1;i++){
+                MeioTransporte transporte = new MeioTransporte();
+                transporte.setDistancia(Float.toString(uber[i].getDistance()) + " km");
+                transporte.setNome(uber[i].getDisplay_name());
+                transporte.setPreco(uber[i].getEstimate());
+                int tempoUber = uber[i].getDuration() / 60;
+                transporte.setTempo(tempoUber + " mins");
+                listaMeios.add(transporte);
+            }
         }
 
         //Carro Particular
