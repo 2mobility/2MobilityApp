@@ -1,7 +1,5 @@
 package com.mobility.a2mobilityapp;
 
-
-
 import android.Manifest;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -109,7 +107,6 @@ import static java.lang.Double.parseDouble;
 import static java.lang.Float.*;
 import static java.lang.Thread.sleep;
 
-
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, FragmentList.OnFragmentInteractionListener {
 
@@ -120,7 +117,6 @@ public class MenuActivity extends AppCompatActivity
     //localização exata
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
 
-
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     private static final float DEFAULT_ZOOM = 15f;
     //variaveis
@@ -128,11 +124,9 @@ public class MenuActivity extends AppCompatActivity
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
-
     //----ListView
     private FrameLayout fragmentContainer;
     private Button btnComparar;
-
 
     private AutoCompleteTextView  enderecoInicial;
     private AutoCompleteTextView  enderecoFinal;
@@ -145,11 +139,9 @@ public class MenuActivity extends AppCompatActivity
     TransportePublico transpPublico = null;
     Particular particular = null;
 
-
     LatLng startLatLgn;
 
     Geocoder geoCoder;
-
 
     //AutoComplete
     protected GeoDataClient mGeoDataClient;
@@ -180,7 +172,6 @@ public class MenuActivity extends AppCompatActivity
         //----Google API
         getLocationPermission();
 
-
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                 .permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -201,9 +192,6 @@ public class MenuActivity extends AppCompatActivity
         enderecoFinal.setAdapter(mAdapter);
 
         //Toast.makeText(this, Auto, Toast.LENGTH_SHORT).show();
-
-        //geoCoder = new Geocoder(this, Locale.getDefault());
-
 
         btnCompara.setOnClickListener(new View.OnClickListener() {
             @Override
