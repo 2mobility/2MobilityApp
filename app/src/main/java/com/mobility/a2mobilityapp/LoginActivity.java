@@ -2,9 +2,12 @@ package com.mobility.a2mobilityapp;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +22,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
     private static final int ERRO_DIALOG_REQUEST = 9001;
+    Button btnCadastrar;
+    Button btnEntrar;
+    TextView txtEsqueceuSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +35,20 @@ public class LoginActivity extends AppCompatActivity {
             init();
         }
 
-        Button btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
+        btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
+
+        btnCadastrar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    btnCadastrar.setBackgroundColor(Color.rgb(0, 100, 0));
+                } else if (event.getAction() == KeyEvent.ACTION_UP) {
+                    btnCadastrar.setBackgroundColor(getResources().getColor(R.color.text_background_verde));
+                }
+                return false;
+            }
+        });
+
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,7 +58,21 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        TextView txtEsqueceuSenha = (TextView) findViewById(R.id.txtEsqueceuSenha);
+
+        txtEsqueceuSenha = (TextView) findViewById(R.id.txtEsqueceuSenha);
+
+       /* txtEsqueceuSenha.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    txtEsqueceuSenha.setBackgroundColor(Color.rgb(190, 190, 190));
+                } else if (event.getAction() == KeyEvent.ACTION_UP) {
+                    txtEsqueceuSenha.setBackgroundColor(Color.WHITE);
+                }
+                return false;
+            }
+        });*/
+
         txtEsqueceuSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +85,18 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void init(){
-        Button btnEntrar = (Button) findViewById(R.id.btnEntrar);
+        btnEntrar = (Button) findViewById(R.id.btnEntrar);
+        btnEntrar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    btnEntrar.setBackgroundColor(Color.rgb(0, 100, 0));
+                } else if (event.getAction() == KeyEvent.ACTION_UP) {
+                    btnEntrar.setBackgroundColor(getResources().getColor(R.color.text_background_verde));
+                }
+                return false;
+            }
+        });
         btnEntrar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -22,6 +23,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.LogPrinter;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -29,6 +32,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import android.support.design.widget.NavigationView;
@@ -149,6 +153,9 @@ public class MenuActivity extends AppCompatActivity
     private static final LatLngBounds BOUNDS_GREATER_SYDNEY = new LatLngBounds(
             new LatLng(-34.041458, 150.790100), new LatLng(-33.682247, 151.383362));
 
+    //loading de processamento (Progress Bar)
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -178,7 +185,7 @@ public class MenuActivity extends AppCompatActivity
         //geo-localizacao
         enderecoInicial = (AutoCompleteTextView) findViewById(R.id.edit_origem);
         enderecoFinal = (AutoCompleteTextView)  findViewById(R.id.edit_destino);
-        btnCompara = findViewById(R.id.btn_comparar);
+        btnCompara = (Button) findViewById(R.id.btn_comparar);
         fragmentContainer = (FrameLayout) findViewById(R.id.fragment_container);
 
         //AutoComplete
@@ -193,10 +200,30 @@ public class MenuActivity extends AppCompatActivity
 
         //Toast.makeText(this, Auto, Toast.LENGTH_SHORT).show();
 
+        //loading - ProgressBar
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
+
+        btnCompara.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    btnCompara.setBackgroundColor(Color.rgb(0, 100, 0));
+                    if((enderecoInicial.getText() + "") != "" && (enderecoFinal.getText() + "") != ""){
+                        mostrarProgressBar(findViewById(R.id.progressBar));
+                    }
+
+                } else if (event.getAction() == KeyEvent.ACTION_UP) {
+                    btnCompara.setBackgroundColor(getResources().getColor(R.color.text_background_verde));
+                }
+                return false;
+            }
+        });
+
+        //Ação do botão comparar
         btnCompara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if((enderecoInicial.getText() + "") != "" && (enderecoFinal.getText() + "") != ""){
                     runOnUiThread(new Runnable(){
                         public void run() {
@@ -226,6 +253,14 @@ public class MenuActivity extends AppCompatActivity
         });
     }
 
+    public void mostrarProgressBar(View view){
+        progressBar.setVisibility(View.VISIBLE);
+    }
+    public void esconderProgressBar(View view){
+        progressBar.setVisibility(View.GONE);
+    }
+
+
     public void openFragment(){
         FragmentList fragmentList = FragmentList.newInstance("1", "2",uber,transpPublico,particular);
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -234,6 +269,7 @@ public class MenuActivity extends AppCompatActivity
                 android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.add(R.id.fragment_container, fragmentList, "LIST_FRAGMENT").commit();
+        esconderProgressBar(findViewById(R.id.progressBar));
     }
 
 
@@ -246,7 +282,6 @@ public class MenuActivity extends AppCompatActivity
                 uber = uberOperation.valoresUber(response);
             }
         });
-
     }
 
     @Override
