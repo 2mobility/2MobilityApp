@@ -246,8 +246,7 @@ public class MenuActivity extends AppCompatActivity
                         }
                     });
                 }else{
-                    enderecoInicial.setText("Else");
-                    enderecoFinal.setText("Else");
+                    Toast.makeText(MenuActivity.this,"Atenção! Preencha o endereço de origem e destino.",Toast.LENGTH_SHORT).show();
                 }
             }
         });
