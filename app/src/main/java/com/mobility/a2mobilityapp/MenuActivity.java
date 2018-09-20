@@ -32,6 +32,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -156,6 +157,10 @@ public class MenuActivity extends AppCompatActivity
     //loading de processamento (Progress Bar)
     private ProgressBar progressBar;
 
+    //imgs edit
+    private ImageView ic_localizacao_img;
+    private ImageView ic_pontos_img;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -204,6 +209,25 @@ public class MenuActivity extends AppCompatActivity
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
 
+        //imgs edits
+        ic_localizacao_img = (ImageView) findViewById(R.id.ic_localizacao_img);
+        ic_pontos_img = (ImageView) findViewById(R.id.ic_pontos_img);
+
+        ic_localizacao_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(MenuActivity.this,"FOIIIII",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ic_pontos_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(MenuActivity.this,"FOIIIII 2",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         btnCompara.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -250,6 +274,8 @@ public class MenuActivity extends AppCompatActivity
                 }
             }
         });
+
+
     }
 
     public void mostrarProgressBar(View view){
@@ -369,7 +395,8 @@ public class MenuActivity extends AppCompatActivity
             }
             mMap.setMyLocationEnabled(true);
             //desabilitar botão de localização
-            //mMap.getUiSettings().setMyLocationButtonEnabled(true);
+            mMap.getUiSettings().setMyLocationButtonEnabled(false);
+
         }
     }
 
