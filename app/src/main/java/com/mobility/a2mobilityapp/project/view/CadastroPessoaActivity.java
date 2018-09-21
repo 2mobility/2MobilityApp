@@ -6,15 +6,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.mobility.a2mobilityapp.R;
 import com.mobility.a2mobilityapp.project.utils.Mask;
+import com.mobility.a2mobilityapp.project.utils.ValidadorCPF;
 
 public class CadastroPessoaActivity extends AppCompatActivity {
 
     private EditText campoCpf;
     private EditText campoCelular;
     private EditText campoData;
+    private EditText campoNome;
+    private EditText campoEmail;
+    private EditText campoSenha;
+    private EditText campoConfirmarSenha;
+    private Button btnConcluir;
+    private Switch switchId;
+    private ValidadorCPF validadorCpf = new ValidadorCPF();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,28 +32,49 @@ public class CadastroPessoaActivity extends AppCompatActivity {
 
         campoCelular = (EditText) findViewById(R.id.editText2);
         campoCelular.addTextChangedListener(Mask.mask(campoCelular, Mask.FORMAT_FONE_CELULAR));
-
         campoData = (EditText) findViewById(R.id.editText3);
         campoData.addTextChangedListener(Mask.mask(campoData, Mask.FORMAT_DATE));
-
         campoCpf = (EditText) findViewById(R.id.editText4);
         campoCpf.addTextChangedListener(Mask.mask(campoCpf, Mask.FORMAT_CPF));
+        campoNome = (EditText) findViewById(R.id.editText);
+        campoEmail = (EditText) findViewById(R.id.editText5);
+        campoSenha = (EditText) findViewById(R.id.editText6);
+        campoConfirmarSenha = (EditText) findViewById(R.id.editText8);
+        btnConcluir = (Button) findViewById(R.id.button);
+        switchId = (Switch) findViewById(R.id.switch2);
 
-        Button button = (Button) findViewById(R.id.button);
-
-        button.setOnClickListener(new View.OnClickListener() {
-
+        btnConcluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // trata os campos vazios
+                if(!campoNome.getText().equals("") && !campoCelular.getText().equals("") && !campoData.getText().equals("") &&
+                        !campoCpf.getText().equals("") && !campoEmail.getText().equals("") &&
+                        !campoSenha.getText().equals("") && !campoConfirmarSenha.getText().equals("")){
+                    //trata CPF
+                    String cpf = campoCpf.getText().toString().replace(".","").replace("-","");
+                    if(validadorCpf.isCPF(cpf)){
+                        // tratar a senha
+                        if(campoSenha.getText().toString().equals(campoConfirmarSenha.getText().toString())){
+                            /*
+                            Colocar a senha para MD5
+                            Mandar para api
+                             */
+                        }else{
+                            Toast.makeText(CadastroPessoaActivity.this,"As senhas são diferentes.",Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        Toast.makeText(CadastroPessoaActivity.this,"CPF inválido.",Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(CadastroPessoaActivity.this,"Atenção! Preencha todos os campos.",Toast.LENGTH_SHORT).show();
 
-                Switch switchId = (Switch) findViewById(R.id.switch2); //busquei pelo id
-                Boolean status = switchId.isChecked(); //checando os status (true / false)
-
+                }
+                //checando os status (true / false)
+                Boolean status = switchId.isChecked();
                 if (status == true) {
                     setContentView(R.layout.fragment_cadastro_automovel);
                 }
             }
-
         });
     }
 }
