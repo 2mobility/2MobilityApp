@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mobility.a2mobilityapp.R;
+import com.mobility.a2mobilityapp.project.utils.Criptografia;
 import com.mobility.a2mobilityapp.project.utils.Mask;
 import com.mobility.a2mobilityapp.project.utils.ValidadorCPF;
 
@@ -20,6 +21,7 @@ public class SenhaActivity extends AppCompatActivity {
     private EditText campoConfirmarSenha;
     private Button btnConcluir;
     private ValidadorCPF validadorCpf = new ValidadorCPF();
+    private Criptografia criptografia = new Criptografia();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +48,9 @@ public class SenhaActivity extends AppCompatActivity {
                     if(validadorCpf.isCPF(cpf)){
                         // tratar a senha
                         if(campoSenha.getText().toString().equals(campoConfirmarSenha.getText().toString())){
+                            String senha = criptografia.criptografar(campoSenha.getText().toString());
+                            String confirmSenha = criptografia.criptografar(campoConfirmarSenha.getText().toString());
                             /*
-                            Colocar a senha para MD5
                             Mandar para api
                              */
                         }else{

@@ -7,13 +7,13 @@ public class Criptografia {
 
     private static MessageDigest md = null;
 
-    /*static {
+    static {
         try {
             md = MessageDigest.getInstance("MD5");
         } catch (NoSuchAlgorithmException ex) {
             ex.printStackTrace();
         }
-    }*/
+    }
 
     private static char[] hexCodes(byte[] text) {
         char[] hexOutput = new char[text.length * 2];
