@@ -137,6 +137,8 @@ public class FragmentList extends Fragment {
         ListView androidListView = (ListView) view.findViewById(R.id.list_view);
         androidListView.setAdapter(simpleAdapter);
 
+        listaMeios.clear();
+
         return view;
     }
 

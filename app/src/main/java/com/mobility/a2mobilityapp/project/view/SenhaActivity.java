@@ -1,7 +1,10 @@
 package com.mobility.a2mobilityapp.project.view;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -63,6 +66,18 @@ public class SenhaActivity extends AppCompatActivity {
                     Toast.makeText(SenhaActivity.this,"Atenção! Preencha todos os campos.",Toast.LENGTH_SHORT).show();
 
                 }
+            }
+        });
+
+        btnConcluir.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    btnConcluir.setBackgroundColor(Color.rgb(0, 100, 0));
+                } else if (event.getAction() == KeyEvent.ACTION_UP) {
+                    btnConcluir.setBackgroundColor(getResources().getColor(R.color.text_background_verde));
+                }
+                return false;
             }
         });
 

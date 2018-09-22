@@ -101,7 +101,7 @@
                     android:layout_marginTop="65dp"
                     android:layout_marginLeft="-45dp"
                     android:layout_toRightOf="@id/edit_destino"
-                    android:src="@drawable/ic_pontos"
+                    android:src="@drawable/ic_estrela"
                     android:id="@+id/ic_pontos_img"/>
 
             </RelativeLayout>

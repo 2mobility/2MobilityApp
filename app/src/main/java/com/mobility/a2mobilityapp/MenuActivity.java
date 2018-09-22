@@ -213,36 +213,9 @@ public class MenuActivity extends AppCompatActivity
         ic_localizacao_img = (ImageView) findViewById(R.id.ic_localizacao_img);
         ic_pontos_img = (ImageView) findViewById(R.id.ic_pontos_img);
 
-        ic_localizacao_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Toast.makeText(MenuActivity.this,"FOIIIII",Toast.LENGTH_SHORT).show();
-            }
-        });
 
-        ic_pontos_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Toast.makeText(MenuActivity.this,"FOIIIII 2",Toast.LENGTH_SHORT).show();
 
-            }
-        });
 
-        btnCompara.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    btnCompara.setBackgroundColor(Color.rgb(0, 100, 0));
-                    if((enderecoInicial.getText() + "") != "" && (enderecoFinal.getText() + "") != ""){
-                        mostrarProgressBar(findViewById(R.id.progressBar));
-                    }
-
-                } else if (event.getAction() == KeyEvent.ACTION_UP) {
-                    btnCompara.setBackgroundColor(getResources().getColor(R.color.text_background_verde));
-                }
-                return false;
-            }
-        });
 
         //Ação do botão comparar
         btnCompara.setOnClickListener(new View.OnClickListener() {
@@ -275,6 +248,9 @@ public class MenuActivity extends AppCompatActivity
             }
         });
 
+        chamaLoading();
+
+        chamaIcone();
 
     }
 
@@ -374,6 +350,40 @@ public class MenuActivity extends AppCompatActivity
         return true;
     }
 
+    public void chamaLoading() {
+        btnCompara.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    btnCompara.setBackgroundColor(Color.rgb(0, 100, 0));
+                    if((enderecoInicial.getText() + "") != "" && (enderecoFinal.getText() + "") != ""){
+                        mostrarProgressBar(findViewById(R.id.progressBar));
+                    }
+
+                } else if (event.getAction() == KeyEvent.ACTION_UP) {
+                    btnCompara.setBackgroundColor(getResources().getColor(R.color.text_background_verde));
+                }
+                return false;
+            }
+        });
+    }
+
+    public void chamaIcone() {
+        ic_localizacao_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MenuActivity.this,"FOIIIII",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ic_pontos_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MenuActivity.this,"FOIIIII 2",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
 
 
     //------Métodos para Google API
