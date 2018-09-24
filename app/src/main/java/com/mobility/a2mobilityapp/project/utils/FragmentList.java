@@ -16,6 +16,7 @@ import com.mobility.a2mobilityapp.project.bean.Particular;
 import com.mobility.a2mobilityapp.project.bean.TransportePublico;
 import com.mobility.a2mobilityapp.project.bean.Uber;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +41,8 @@ public class FragmentList extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private static  DecimalFormat df = new DecimalFormat("#0.00");
 
     private OnFragmentInteractionListener mListener;
 
@@ -82,10 +85,17 @@ public class FragmentList extends Fragment {
         //Carro Particular
         if(particular.getPreco() != null || particular.getTempo() != null){
             MeioTransporte transporte = new MeioTransporte();
-            transporte.setDistancia(particular.getDistancia() + " km");
+            //transporte.setDistancia(particular.getDistancia() + " km");
+            transporte.setDistancia(Float.toString(uber[1].getDistance()) + " km");
             transporte.setNome("Carro Particular");
-            transporte.setPreco("R$" + particular.getPreco());
-            transporte.setTempo(particular.getTempo() + " mins");
+            //transporte.setPreco("R$" + particular.getPreco());
+            double kmLitro = 8;
+            double precoCombustivel = 3.80;
+            double precoFinal = (uber[1].getDistance() / kmLitro) * precoCombustivel;
+            transporte.setPreco("R$" + df.format(precoFinal));
+            //transporte.setTempo(particular.getTempo() + " mins");
+            int tempoParticular = uber[1].getDuration() / 60;
+            transporte.setTempo(tempoParticular + " mins");
             listaMeios.add(transporte);
         }
 
