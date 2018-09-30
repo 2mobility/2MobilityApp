@@ -117,10 +117,11 @@ public class FragmentList extends Fragment {
     }
     public static MeioTransporte setTransportePublico(TransportePublico transportePublico){
         MeioTransporte transporte = new MeioTransporte();
-        transporte.setNome("Transporte Publico");
+        transporte.setNome("Transporte Público");
         transporte.setDistancia(transportePublico.getDistancia());
         transporte.setPreco(transportePublico.getPreco());
         transporte.setTempo(transportePublico.getTempo());
+        //transporte.setImagem(R.drawable.ic_bus);
         return transporte;
     }
     @Override
@@ -137,6 +138,16 @@ public class FragmentList extends Fragment {
             hm.put("listview_preco", transporte.getPreco());
             hm.put("listview_tempo", transporte.getTempo());
             //hm.put("listview_imagem", Integer.toString(transporte.getImagem()));
+            if(transporte.getNome().equals("Transporte Público")){
+                hm.put("listview_imagem", Integer.toString((R.drawable.ic_bus)));
+            }
+            else if(transporte.getNome().equals("Carro Particular")){
+                hm.put("listview_imagem", Integer.toString((R.drawable.ic_automovel_list)));
+            }
+            else {
+                hm.put("listview_imagem", Integer.toString((R.drawable.ic_uber)));
+            }
+
             aList.add(hm);
         }
 

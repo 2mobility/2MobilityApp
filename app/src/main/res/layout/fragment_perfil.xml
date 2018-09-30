@@ -7,110 +7,125 @@
     android:background="@drawable/cadastro"
     tools:context=".project.view.PerfilFragment">
 
-    <EditText
-        android:id="@+id/editText10"
-        android:layout_width="332dp"
-        android:layout_height="44dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="234dp"
-        android:background="#313131"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:hint="E-mail@email.com"
-        android:textColor="#ffffff"
-        tools:layout_editor_absoluteX="14dp"
-        tools:layout_editor_absoluteY="114dp"
-        />
-
-    <EditText
-        android:id="@+id/editText7"
-        android:layout_width="332dp"
-        android:layout_height="44dp"
+    <RelativeLayout
+        android:id="@+id/relLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="168dp"
-        android:background="#313131"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:hint="111.111.111-11"
-        android:textColor="#ffffff"
-        tools:layout_editor_absoluteX="14dp"
-        tools:layout_editor_absoluteY="173dp"/>
+        android:layout_marginHorizontal="20dp">
+
+        <EditText
+            android:id="@+id/editText10"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="234dp"
+            android:background="@color/edit_background_cinza"
+            android:ems="10"
+            android:hint="E-mail@email.com"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:textColor="@color/edit_text_branco"
+            android:textColorHint="@color/edit_hint_text_cinza"
+            tools:layout_editor_absoluteX="14dp"
+            tools:layout_editor_absoluteY="114dp" />
+
+        <EditText
+            android:id="@+id/editText7"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="168dp"
+            android:background="@color/edit_background_cinza"
+            android:ems="10"
+            android:hint="111.111.111-11"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:textColor="@color/edit_text_branco"
+            android:textColorHint="@color/edit_hint_text_cinza"
+            tools:layout_editor_absoluteX="14dp"
+            tools:layout_editor_absoluteY="173dp" />
 
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editText7"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="35dp"
-        android:text="Meu Perfil"
-        android:textColor="#319a29"
-        android:textSize="30dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="209dp"
-        tools:layout_editor_absoluteY="23dp" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editText7"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="35dp"
+            android:text="Meu Perfil"
+            android:textColor="#319a29"
+            android:textSize="30dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="209dp"
+            tools:layout_editor_absoluteY="23dp" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="332dp"
-        android:layout_height="44dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="105dp"
-        android:background="#313131"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:hint="Fulano de Tal"
-        android:textColor="#ffffff"
-        tools:layout_editor_absoluteX="14dp"
-        tools:layout_editor_absoluteY="114dp"/>
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="105dp"
+            android:background="@color/edit_background_cinza"
+            android:ems="10"
+            android:hint="Fulano de Tal"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:textColor="@color/edit_text_branco"
+            android:textColorHint="@color/edit_hint_text_cinza"
+            tools:layout_editor_absoluteX="14dp"
+            tools:layout_editor_absoluteY="114dp" />
 
-    <EditText
-        android:id="@+id/editText9"
-        android:layout_width="332dp"
-        android:layout_height="44dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/editText7"
-        android:layout_marginTop="228dp"
-        android:background="#313131"
-        android:ems="10"
-        android:inputType="phone"
-        android:hint="(11) 9898-17270"
-        android:paddingLeft="10dp"
-        android:textColor="#ffffff" />
+        <EditText
+            android:id="@+id/editText9"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/editText7"
+            android:layout_marginTop="228dp"
+            android:background="@color/edit_background_cinza"
+            android:ems="10"
+            android:hint="(11) 9898-17270"
+            android:inputType="phone"
+            android:paddingLeft="10dp"
+            android:textColor="@color/edit_text_branco"
+            android:textColorHint="@color/edit_hint_text_cinza" />
 
-    <EditText
-        android:id="@+id/editText11"
-        android:layout_width="331dp"
-        android:layout_height="44dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="173dp"
-        android:background="#313131"
-        android:ems="10"
-        android:inputType="date"
-        android:paddingLeft="10dp"
-        android:hint="16/01/1997"
-        android:textColor="#ffffff" />
+        <EditText
+            android:id="@+id/editText11"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="173dp"
+            android:background="@color/edit_background_cinza"
+            android:ems="10"
+            android:hint="16/01/1997"
+            android:inputType="date"
+            android:paddingLeft="10dp"
+            android:textColor="@color/edit_text_branco"
+            android:textColorHint="@color/edit_hint_text_cinza" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="152dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="66dp"
-        android:background="#319a29"
-        android:text="CONCLUIR"
-        android:textColor="#ffffff"
-        tools:layout_editor_absoluteX="104dp"
-        tools:layout_editor_absoluteY="490dp"
-        tools:text="ALTERAR" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="152dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="66dp"
+            android:background="#319a29"
+            android:text="CONCLUIR"
+            android:textColor="#ffffff"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="490dp"
+            tools:text="ALTERAR" />
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

@@ -136,6 +136,7 @@ public class MenuActivity extends AppCompatActivity
     private AutoCompleteTextView  enderecoInicial;
     private AutoCompleteTextView  enderecoFinal;
     private Button btnCompara;
+    private Button btnCompara2;
     protected Integer comparativo;
     private Button btnImprimi;
     private Endereco endereco;
@@ -191,6 +192,7 @@ public class MenuActivity extends AppCompatActivity
         enderecoInicial = (AutoCompleteTextView) findViewById(R.id.edit_origem);
         enderecoFinal = (AutoCompleteTextView)  findViewById(R.id.edit_destino);
         btnCompara = (Button) findViewById(R.id.btn_comparar);
+        btnCompara2 = (Button) findViewById(R.id.btn_comparar2);
         fragmentContainer = (FrameLayout) findViewById(R.id.fragment_container);
 
         //AutoComplete
@@ -213,52 +215,89 @@ public class MenuActivity extends AppCompatActivity
         ic_localizacao_img = (ImageView) findViewById(R.id.ic_localizacao_img);
         ic_pontos_img = (ImageView) findViewById(R.id.ic_pontos_img);
 
-
-
-
-
-        //Ação do botão comparar
-        btnCompara.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if((enderecoInicial.getText() + "") != "" && (enderecoFinal.getText() + "") != ""){
-                    runOnUiThread(new Runnable(){
-                        public void run() {
-                            //Fecha o teclado apos clicar no botão
-                            ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
-                                    .hideSoftInputFromWindow(enderecoInicial.getWindowToken(), 0);
-
-                            endereco = new Endereco();
-                            endereco.setNominalPartida(enderecoInicial.getText().toString());
-                            endereco.setNominalChegada(enderecoFinal.getText().toString());
-                            chamaUber();
-                            TransporteOperation transp = new TransporteOperation();
-                            String resposta = transp.getValuesTransport(endereco);
-                            transpPublico = transp.getTransporte(resposta);
-
-                            ParticularOperation part = new ParticularOperation();
-                            particular = part.getParticular();
-
-                            openFragment();
-                        }
-                    });
-                }else{
-                    Toast.makeText(MenuActivity.this,"Atenção! Preencha o endereço de origem e destino.",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        chamaLoading();
+        touchBtnCompara();
 
         chamaIcone();
 
     }
 
+    public void clickBtnCompara(){
+        //Ação do botão comparar
+        btnCompara.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                runOnUiThread(new Runnable(){
+                    public void run() {
+                        //Fecha o teclado apos clicar no botão
+                        ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
+                                .hideSoftInputFromWindow(enderecoInicial.getWindowToken(), 0);
+
+                        endereco = new Endereco();
+                        endereco.setNominalPartida(enderecoInicial.getText().toString());
+                        endereco.setNominalChegada(enderecoFinal.getText().toString());
+                        chamaUber();
+                        TransporteOperation transp = new TransporteOperation();
+                        String resposta = transp.getValuesTransport(endereco);
+                        transpPublico = transp.getTransporte(resposta);
+
+                        ParticularOperation part = new ParticularOperation();
+                        particular = part.getParticular();
+
+                        openFragment();
+                    }
+                });      
+            }
+        });
+    }
+
     public void mostrarProgressBar(View view){
+        btnCompara.setVisibility(View.GONE);
+        btnCompara2.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.VISIBLE);
+        clickBtnCompara();
     }
     public void esconderProgressBar(View view){
         progressBar.setVisibility(View.GONE);
+        btnCompara2.setVisibility(View.GONE);
+        btnCompara.setVisibility(View.VISIBLE);
+    }
+
+    public void touchBtnCompara() {
+        btnCompara.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    btnCompara.setBackgroundColor(Color.rgb(0, 100, 0));
+                    if((enderecoInicial.getText() + "") != "" && (enderecoFinal.getText() + "") != ""){
+                        mostrarProgressBar(findViewById(R.id.progressBar));
+                    }
+                    else{
+                        Toast.makeText(MenuActivity.this,"Atenção! Preencha o endereço de origem e destino.",Toast.LENGTH_SHORT).show();
+                    }
+
+                } else if (event.getAction() == KeyEvent.ACTION_UP) {
+                    btnCompara.setBackgroundColor(getResources().getColor(R.color.text_background_verde));
+                }
+                return false;
+            }
+        });
+    }
+
+    public void chamaIcone() {
+        ic_localizacao_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MenuActivity.this,"FOIIIII",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ic_pontos_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MenuActivity.this,"FOIIIII 2",Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
 
@@ -350,40 +389,7 @@ public class MenuActivity extends AppCompatActivity
         return true;
     }
 
-    public void chamaLoading() {
-        btnCompara.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    btnCompara.setBackgroundColor(Color.rgb(0, 100, 0));
-                    if((enderecoInicial.getText() + "") != "" && (enderecoFinal.getText() + "") != ""){
-                        mostrarProgressBar(findViewById(R.id.progressBar));
-                    }
 
-                } else if (event.getAction() == KeyEvent.ACTION_UP) {
-                    btnCompara.setBackgroundColor(getResources().getColor(R.color.text_background_verde));
-                }
-                return false;
-            }
-        });
-    }
-
-    public void chamaIcone() {
-        ic_localizacao_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MenuActivity.this,"FOIIIII",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        ic_pontos_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MenuActivity.this,"FOIIIII 2",Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
 
 
     //------Métodos para Google API

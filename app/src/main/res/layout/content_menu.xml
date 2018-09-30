@@ -125,6 +125,17 @@
                     android:text="Comparar"
                     />
 
+                <Button
+                    android:id="@+id/btn_comparar2"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/edit_background_cinza"
+                    android:textColor="@color/text_text_branco"
+                    android:text="Comparar"
+                    android:visibility="gone"
+                    />
+
             </RelativeLayout>
 
             <RelativeLayout
