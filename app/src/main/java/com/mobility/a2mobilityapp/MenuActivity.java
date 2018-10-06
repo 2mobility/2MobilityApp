@@ -77,6 +77,8 @@ import com.mobility.a2mobilityapp.project.utils.HttpDataHandler;
 
 
 import com.mobility.a2mobilityapp.project.view.CadastroAutomovelFragment;
+import com.mobility.a2mobilityapp.project.view.GraficoFinanceiroFragment;
+import com.mobility.a2mobilityapp.project.view.GraficoTempoFragment;
 import com.mobility.a2mobilityapp.project.view.MeusAutomoveisFragment;
 import com.mobility.a2mobilityapp.project.view.PerfilFragment;
 import com.uber.sdk.android.core.UberSdk;
@@ -288,6 +290,7 @@ public class MenuActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Toast.makeText(MenuActivity.this,"FOIIIII",Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -376,11 +379,13 @@ public class MenuActivity extends AppCompatActivity
         } else if (id == R.id.nav_automovel) {
             MeusAutomoveisFragment automovel = new MeusAutomoveisFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_conteudo, automovel).commit();
-        } /*else if (id == R.id.nav_local) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_grafico_tempo) {
+            GraficoTempoFragment graficoTempo = new GraficoTempoFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_conteudo, graficoTempo).commit();
+        } else if (id == R.id.nav_grafico_custo) {
+            GraficoFinanceiroFragment graficoCusto = new GraficoFinanceiroFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_conteudo, graficoCusto).commit();
+        } /*else if (id == R.id.nav_send) {
 
         }*/
 
@@ -449,6 +454,16 @@ public class MenuActivity extends AppCompatActivity
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
+
+                                    try {
+                                        List<Address> addresses = geoCoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1);
+                                        if (addresses != null && addresses.size() > 0) {
+                                            Toast.makeText(MenuActivity.this, "Endereço: " + addresses.get(0).getAddressLine(0), Toast.LENGTH_LONG).show();
+                                        }
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+
 
                                 }else{
                                     Log.d(TAG, "onComplete: current location is null");

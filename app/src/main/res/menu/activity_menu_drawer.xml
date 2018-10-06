@@ -16,14 +16,14 @@
             android:id="@+id/nav_automovel"
             android:icon="@drawable/ic_automovel"
             android:title="Automóvel" />
-        <!--<item
-            android:id="@+id/nav_local"
-            android:icon="@drawable/ic_local"
-            android:title="Local" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_grafico_tempo"
+            android:icon="@drawable/ic_local"
+            android:title="Gráfico de Tempo" />
+        <item
+            android:id="@+id/nav_grafico_custo"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />-->
+            android:title="Gráfico de Custo" />
     </group>
 
     <!--<item android:title="Communicate">
