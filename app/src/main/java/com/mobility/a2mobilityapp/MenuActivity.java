@@ -357,9 +357,9 @@ public class MenuActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+       /* if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -458,7 +458,8 @@ public class MenuActivity extends AppCompatActivity
                                     try {
                                         List<Address> addresses = geoCoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1);
                                         if (addresses != null && addresses.size() > 0) {
-                                            Toast.makeText(MenuActivity.this, "Endereço: " + addresses.get(0).getAddressLine(0), Toast.LENGTH_LONG).show();
+                                            //Toast.makeText(MenuActivity.this, "Endereço: " + addresses.get(0).getAddressLine(0), Toast.LENGTH_LONG).show();
+                                            enderecoInicial.setText(addresses.get(0).getAddressLine(0));
                                         }
                                     } catch (IOException e) {
                                         e.printStackTrace();
