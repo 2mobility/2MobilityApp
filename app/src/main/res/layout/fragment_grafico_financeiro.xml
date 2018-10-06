@@ -5,11 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".project.view.GraficoFinanceiroFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/piechart_1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Gráfico Financeiro"
-        android:gravity="center"/>
+        android:layout_height="300sp">
+    </com.github.mikephil.charting.charts.PieChart>
 
 </FrameLayout>
