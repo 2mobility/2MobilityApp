@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.mobility.a2mobilityapp.R;
@@ -23,7 +24,16 @@ import com.mobility.a2mobilityapp.R;
 import java.util.ArrayList;
 
 public class GraficoTempoFragment extends Fragment {
+
     PieChart pieChart;
+
+    Spinner comboBox;
+
+    private String[] dias = new String[]{
+            "Semanal",
+            "Quinzenal",
+            "Mensal"
+    };
 
     public GraficoTempoFragment() {
         // Required empty public constructor
@@ -36,6 +46,7 @@ public class GraficoTempoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_grafico_tempo, container, false);
 
         pieChart = view.findViewById(R.id.piechart_1);
+        comboBox = view.findViewById(R.id.spinnerTempo);
 
         setPieChart(30,30,30);
         return view;

@@ -83,7 +83,7 @@
         android:layout_marginHorizontal="20dp"
         android:background="#313131"
         android:hint="CPF"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:paddingLeft="10dp"
         android:textColorHint="@color/edit_hint_text_cinza" />
 
