@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".project.view.GraficoFinanceiroFragment">
 
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editText8"
+        android:layout_gravity="right"
+        android:layout_marginEnd="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:text="Relatório de Custo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#319a29"
+        android:textSize="30dp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20pt">
+
+    </Spinner>
+
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/piechart_1"
         android:layout_width="match_parent"
-        android:layout_height="300sp">
+        android:layout_height="40pt"
+        android:layout_marginHorizontal="20dp">
     </com.github.mikephil.charting.charts.PieChart>
 
-</FrameLayout>
+</LinearLayout>
