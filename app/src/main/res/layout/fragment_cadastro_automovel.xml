@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,21 +7,55 @@
     android:background="@drawable/aultomovel"
     tools:context=".project.view.CadastroAutomovelFragment">
 
-        <RelativeLayout
-            android:id="@+id/relLayout1"
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="right"
+                    android:layout_marginEnd="20dp"
+                    android:text="Automóveis"
+                    android:textColor="#319a29"
+                    android:textSize="30dp" />
+
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp"
+                    android:hint="Modelo"
+                    android:textColor="@color/edit_text_branco"
+                    android:textColorHint="@color/edit_hint_text_cinza"
+                    android:background="@color/edit_background_cinza"
+                    />
+
+        <EditText
+            android:id="@+id/editText13"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginHorizontal="20dp">
+            android:layout_height="44dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10pt"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:hint="Km/litro"
+            android:textColor="@color/edit_text_branco"
+            android:textColorHint="@color/edit_hint_text_cinza"
+            android:background="@color/edit_background_cinza"
+
+            />
 
                 <EditText
                     android:id="@+id/editText18"
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="232dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="10pt"
                     android:background="@color/edit_background_cinza"
                     android:ems="10"
                     android:hint="Preço"
@@ -32,106 +66,72 @@
                     tools:layout_editor_absoluteX="14dp"
                     tools:layout_editor_absoluteY="114dp" />
 
-                <EditText
-                    android:id="@+id/editText13"
-                    android:layout_width="match_parent"
-                    android:layout_height="44dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="169dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:paddingLeft="10dp"
-                    android:hint="Km/litro"
-                    android:textColor="@color/edit_text_branco"
-                    android:textColorHint="@color/edit_hint_text_cinza"
-                    android:background="@color/edit_background_cinza"
-                    tools:layout_editor_absoluteX="14dp"
-                    tools:layout_editor_absoluteY="114dp"
-                    />
 
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="35dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="20dp"
-                    android:text="Automóveis"
-                    android:textColor="#319a29"
-                    android:textSize="30dp" />
 
 
-                <EditText
-                    android:id="@+id/editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="44dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="105dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:paddingLeft="10dp"
-                    android:hint="Modelo"
-                    android:textColor="@color/edit_text_branco"
-                    android:textColorHint="@color/edit_hint_text_cinza"
-                    android:background="@color/edit_background_cinza"
-                    tools:layout_editor_absoluteX="14dp"
-                    tools:layout_editor_absoluteY="114dp"
-                    />
+
+
 
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignStart="@+id/editText18"
                     android:layout_marginBottom="252dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="10pt"
                     android:text="Tipo de Automovel:"
                     android:textColor="#ffffff" />
 
                 <RadioGroup
                     android:layout_width="332dp"
                     android:layout_height="114dp"
-                    android:layout_alignStart="@+id/editText18"
                     android:layout_below="@+id/textView5"
-                    android:layout_marginTop="-252dp">
+                    android:layout_marginTop="-252dp"
+                    android:layout_marginHorizontal="20dp"
+                    >
 
+                        <LinearLayout android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
-                        <RadioButton
-                            android:id="@+id/radioButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textColor="#ffffff"
-                            android:text="Carro"
-                            android:checked="true"/>
+                                <RadioButton
+                                    android:id="@+id/radioButton"
+                                    android:layout_marginTop="10pt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="left"
+                                    android:layout_weight="1"
+                                    android:textColor="#ffffff"
+                                    android:text="Carro"
+                                    android:checked="true"/>
 
-                        <RadioButton
-                            android:id="@+id/radioButton2"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textColor="#ffffff"
-                            android:text="Moto" />
+                                <RadioButton
+                                    android:layout_marginLeft="20pt"
+                                    android:layout_marginTop="10pt"
+                                    android:id="@+id/radioButton2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="Moto"
+                                    android:layout_gravity="right"
+                                    android:textColor="#ffffff" />
+                        </LinearLayout>
 
                 </RadioGroup>
 
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="152dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="66dp"
-                    android:background="#319a29"
-                    android:text="CADASTRAR"
-                    android:textColor="#ffffff"
-                    tools:layout_editor_absoluteX="104dp"
-                    tools:layout_editor_absoluteY="490dp"
-                    tools:text="CADASTRAR" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="152dp"
+            android:layout_height="43dp"
+            android:layout_centerHorizontal="true"
+            android:background="#319a29"
+            android:layout_gravity="center"
+            android:text="CADASTRAR"
+            android:textColor="#ffffff"
+            tools:text="CADASTRAR"
+            android:layout_marginHorizontal="20dp"/>
 
-        </RelativeLayout>
 
-</RelativeLayout>
+
+</LinearLayout>

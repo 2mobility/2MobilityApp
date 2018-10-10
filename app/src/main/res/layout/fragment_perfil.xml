@@ -61,7 +61,7 @@
             android:layout_centerHorizontal="true"
             android:background="@color/edit_background_cinza"
             android:hint="111.111.111-11"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:paddingLeft="10dp"
             android:textColor="@color/edit_text_branco"
             android:textColorHint="@color/edit_hint_text_cinza"

@@ -34,6 +34,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import android.support.design.widget.NavigationView;
@@ -51,6 +52,7 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.PlaceBufferResponse;
 import com.google.android.gms.location.places.PlaceDetectionClient;
 import com.google.android.gms.location.places.Places;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -163,6 +165,9 @@ public class MenuActivity extends AppCompatActivity
     //imgs edit
     private ImageView ic_localizacao_img;
     private ImageView ic_pontos_img;
+
+    double latitudeAtual = 0;
+    double longitudeAtual = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -286,13 +291,13 @@ public class MenuActivity extends AppCompatActivity
     }
 
     public void chamaIcone() {
-        ic_localizacao_img.setOnClickListener(new View.OnClickListener() {
+        /*ic_localizacao_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MenuActivity.this,"FOIIIII",Toast.LENGTH_SHORT).show();
 
             }
-        });
+        });*/
 
         ic_pontos_img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -399,7 +404,7 @@ public class MenuActivity extends AppCompatActivity
 
     //------Métodos para Google API
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(final GoogleMap googleMap) {
         //Toast.makeText(this, "Map está iniciado", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onMapReady: map está iniciado");
         mMap = googleMap;
@@ -415,8 +420,18 @@ public class MenuActivity extends AppCompatActivity
                 return;
             }
             mMap.setMyLocationEnabled(true);
-            //desabilitar botão de localização
+            //desabilitar botão de localização padrão do google
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
+
+            //cria ação do botão de localização personalizado
+            ic_localizacao_img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    LatLng latLng = new LatLng(latitudeAtual, longitudeAtual);
+                    CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 15);
+                    googleMap.animateCamera(cameraUpdate);
+                }
+            });
 
         }
     }
@@ -443,9 +458,6 @@ public class MenuActivity extends AppCompatActivity
                                     moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
                                             DEFAULT_ZOOM);
 
-
-
-
                                     try{
                                         List<Address> myAddresses = geoCoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1);
                                         String address  = myAddresses.get(0).getAddressLine(0);
@@ -460,6 +472,8 @@ public class MenuActivity extends AppCompatActivity
                                         if (addresses != null && addresses.size() > 0) {
                                             //Toast.makeText(MenuActivity.this, "Endereço: " + addresses.get(0).getAddressLine(0), Toast.LENGTH_LONG).show();
                                             enderecoInicial.setText(addresses.get(0).getAddressLine(0));
+                                            latitudeAtual = addresses.get(0).getLatitude();
+                                            longitudeAtual = addresses.get(0).getLongitude();
                                         }
                                     } catch (IOException e) {
                                         e.printStackTrace();

@@ -52,15 +52,6 @@
         android:layout_marginTop="172dp"
         app:srcCompat="@drawable/x" />
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="33dp"
-        android:layout_height="31dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/imageView5"
-        android:layout_marginEnd="73dp"
-        app:srcCompat="@drawable/pencil" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="152dp"

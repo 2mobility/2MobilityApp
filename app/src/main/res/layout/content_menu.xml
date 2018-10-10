@@ -141,18 +141,13 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="280dp"
-                android:layout_marginHorizontal="20dp"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/sombra"
                 >
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/fragment_container"
-                    android:layout_marginVertical="2dp"
-                    android:layout_marginHorizontal="2dp"
                    />
 
             </RelativeLayout>
