@@ -1,13 +1,12 @@
 package com.mobility.a2mobilityapp.project.view;
 
-import android.content.Context;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 
 import com.mobility.a2mobilityapp.R;
 
@@ -25,6 +24,14 @@ public class GraficoFinanceiroFragment extends Fragment {
 
     PieChart pieChart;
 
+    Spinner comboBox;
+
+    private String[] dias = new String[]{
+            "Diário",
+            "Semanal",
+            "Mensal"
+    };
+
     public GraficoFinanceiroFragment () {
     }
 
@@ -36,6 +43,7 @@ public class GraficoFinanceiroFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_grafico_financeiro, container, false);
 
         pieChart = view.findViewById(R.id.piechart_1);
+        comboBox = view.findViewById(R.id.spinnerCusto);
 
         setPieChart(30,30,30);
 
@@ -57,7 +65,7 @@ public class GraficoFinanceiroFragment extends Fragment {
         yValues.add(new PieEntry(uber,"Uber"));
         yValues.add(new PieEntry(carroProprio,"Carro Próprio"));
 
-        PieDataSet dataSet = new PieDataSet(yValues, "Dinheiro");
+        PieDataSet dataSet = new PieDataSet(yValues, "Custo");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
         dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
