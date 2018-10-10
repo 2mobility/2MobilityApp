@@ -12,12 +12,10 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editText8"
         android:layout_gravity="right"
         android:layout_marginEnd="20dp"
         android:layout_marginHorizontal="20dp"
         android:text="Relatório de Tempo"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#319a29"
         android:textSize="30dp"
         android:layout_marginTop="20dp"/>
