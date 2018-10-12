@@ -14,6 +14,8 @@ import com.mobility.a2mobilityapp.R;
 import com.mobility.a2mobilityapp.project.utils.Criptografia;
 import com.mobility.a2mobilityapp.project.utils.Mask;
 import com.mobility.a2mobilityapp.project.utils.ValidadorCPF;
+import com.mobility.a2mobilityapp.project.utils.ValidadorEmail;
+import com.mobility.a2mobilityapp.project.utils.ValidadorSenha;
 
 public class SenhaActivity extends AppCompatActivity {
 
@@ -25,6 +27,8 @@ public class SenhaActivity extends AppCompatActivity {
     private Button btnConcluir;
     private ValidadorCPF validadorCpf = new ValidadorCPF();
     private Criptografia criptografia = new Criptografia();
+    private ValidadorSenha validadorSenha = new ValidadorSenha();
+    private ValidadorEmail validadorEmail = new ValidadorEmail();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,26 +48,37 @@ public class SenhaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // trata os campos vazios
-                if(!campoData.getText().equals("") && !campoEmail.getText().equals("") && !campoCpf.getText().equals("") &&
-                        !campoSenha.getText().equals("") && !campoConfirmarSenha.getText().toString().equals("")){
+                if(!campoData.getText().toString().equals("") && !campoEmail.getText().toString().equals("") &&
+                        !campoCpf.getText().toString().equals("") && !campoSenha.getText().toString().equals("") &&
+                        !campoConfirmarSenha.getText().toString().equals("")){
                     //trata CPF
                     String cpf = campoCpf.getText().toString().replace(".","").replace("-","");
                     if(validadorCpf.isCPF(cpf)){
-                        // tratar a senha
-                        if(campoSenha.getText().toString().equals(campoConfirmarSenha.getText().toString())){
-                            String senha = criptografia.criptografar(campoSenha.getText().toString());
-                            String confirmSenha = criptografia.criptografar(campoConfirmarSenha.getText().toString());
-                            /*
-                            Mandar para api
-                             */
+                        //verificar email
+                        if(validadorEmail.isEmail(campoEmail.getText().toString())){
+                            //Verificar se senha esta nos padrões Exemplo@123
+                            if(validadorSenha.isSenha(campoSenha.getText().toString())){
+                                // tratar a senha
+                                if(campoSenha.getText().toString().equals(campoConfirmarSenha.getText().toString())){
+                                    String senha = criptografia.criptografar(campoSenha.getText().toString());
+                                    String confirmSenha = criptografia.criptografar(campoConfirmarSenha.getText().toString());
+                                    /*
+                                    Mandar para api
+                                     */
+                                }else{
+                                    Toast.makeText(SenhaActivity.this,"As senhas não coincidem.",Toast.LENGTH_SHORT).show();
+                                }
+                            }else {
+                                Toast.makeText(SenhaActivity.this,"Senha Inválida! Ex: \"Exemplo@123\"",Toast.LENGTH_SHORT).show();
+                            }
                         }else{
-                            Toast.makeText(SenhaActivity.this,"As senhas são diferentes.",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SenhaActivity.this,"E-mail inválido. Forneça um e-mail existente.",Toast.LENGTH_SHORT).show();
                         }
                     }else{
                         Toast.makeText(SenhaActivity.this,"CPF inválido.",Toast.LENGTH_SHORT).show();
                     }
                 }else{
-                    Toast.makeText(SenhaActivity.this,"Atenção! Preencha todos os campos.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SenhaActivity.this,"Atenção! Existem campos a serem preenchidos.",Toast.LENGTH_SHORT).show();
 
                 }
             }

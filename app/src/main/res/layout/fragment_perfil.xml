@@ -33,7 +33,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20pt"
         android:background="@color/edit_background_cinza"
-        android:hint="Fulano de Tal"
+        android:hint="Nome"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
         android:textColor="@color/edit_text_branco"

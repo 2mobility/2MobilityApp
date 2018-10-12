@@ -42,7 +42,7 @@
         android:background="@color/edit_background_cinza"
         android:hint="Nova Senha"
         android:paddingLeft="10dp"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textColor="@color/edit_text_branco"
         android:textColorHint="@color/edit_hint_text_cinza"
         tools:layout_editor_absoluteY="114dp" />
@@ -55,7 +55,7 @@
         android:layout_marginHorizontal="20dp"
         android:background="@color/edit_background_cinza"
         android:hint="Confirmar nova senha"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:paddingLeft="10dp"
         android:textColor="@color/edit_text_branco"
         android:textColorHint="@color/edit_hint_text_cinza"
