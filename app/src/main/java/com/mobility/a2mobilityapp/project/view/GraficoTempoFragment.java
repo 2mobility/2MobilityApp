@@ -104,9 +104,9 @@ public class GraficoTempoFragment extends Fragment {
         pieChart.setHoleColor(Color.WHITE);
         pieChart.animateY(1000, Easing.EasingOption.EaseInOutCubic);
         ArrayList<PieEntry> yValues = new ArrayList<>();
-        yValues.add(new PieEntry(transportePublico,"Transporte Público"));
-        yValues.add(new PieEntry(uber,"Uber"));
-        yValues.add(new PieEntry(carroProprio,"Carro Próprio"));
+        yValues.add(new PieEntry(transportePublico,"%"));
+        yValues.add(new PieEntry(uber,"%"));
+        yValues.add(new PieEntry(carroProprio,"%"));
 
         PieDataSet dataSet = new PieDataSet(yValues, "Tempo");
         dataSet.setSliceSpace(3f);
