@@ -97,7 +97,7 @@ public class GraficoTempoFragment extends Fragment {
     public void setPieChart(int transportePublico, int uber, int carroProprio) {
         this.pieChart = pieChart;
         pieChart.setUsePercentValues(true);
-        pieChart.getDescription().setEnabled(true);
+        pieChart.getDescription().setEnabled(false);
         pieChart.setExtraOffsets(5,10,5,5);
         pieChart.setDragDecelerationFrictionCoef(0.9f);
         pieChart.setTransparentCircleRadius(61f);
