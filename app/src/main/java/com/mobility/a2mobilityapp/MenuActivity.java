@@ -79,6 +79,7 @@ import com.mobility.a2mobilityapp.project.utils.HttpDataHandler;
 
 
 import com.mobility.a2mobilityapp.project.view.CadastroAutomovelFragment;
+import com.mobility.a2mobilityapp.project.view.CadastroPessoaActivity;
 import com.mobility.a2mobilityapp.project.view.GraficoFinanceiroFragment;
 import com.mobility.a2mobilityapp.project.view.GraficoTempoFragment;
 import com.mobility.a2mobilityapp.project.view.MeusAutomoveisFragment;
@@ -455,30 +456,33 @@ public class MenuActivity extends AppCompatActivity
                                     Log.d(TAG, "onComplete: found location!");
                                     Location currentLocation = (Location) task.getResult();
 
-                                    moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
-                                            DEFAULT_ZOOM);
+                                    if(currentLocation != null){
+                                        moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
+                                                DEFAULT_ZOOM);
 
-                                    try{
-                                        List<Address> myAddresses = geoCoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1);
-                                        String address  = myAddresses.get(0).getAddressLine(0);
-                                        String city     = myAddresses.get(0).getLocality();
-                                        Log.d(TAG, "Seu endereço: " + address);
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-
-                                    try {
-                                        List<Address> addresses = geoCoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1);
-                                        if (addresses != null && addresses.size() > 0) {
-                                            //Toast.makeText(MenuActivity.this, "Endereço: " + addresses.get(0).getAddressLine(0), Toast.LENGTH_LONG).show();
-                                            enderecoInicial.setText(addresses.get(0).getAddressLine(0));
-                                            latitudeAtual = addresses.get(0).getLatitude();
-                                            longitudeAtual = addresses.get(0).getLongitude();
+                                        try{
+                                            List<Address> myAddresses = geoCoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1);
+                                            String address  = myAddresses.get(0).getAddressLine(0);
+                                            String city     = myAddresses.get(0).getLocality();
+                                            Log.d(TAG, "Seu endereço: " + address);
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
                                         }
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
 
+                                        try {
+                                            List<Address> addresses = geoCoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1);
+                                            if (addresses != null && addresses.size() > 0) {
+                                                //Toast.makeText(MenuActivity.this, "Endereço: " + addresses.get(0).getAddressLine(0), Toast.LENGTH_LONG).show();
+                                                enderecoInicial.setText(addresses.get(0).getAddressLine(0));
+                                                latitudeAtual = addresses.get(0).getLatitude();
+                                                longitudeAtual = addresses.get(0).getLongitude();
+                                            }
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }else{
+                                        Toast.makeText(MenuActivity.this,"Por Favor! Ative sua localização.",Toast.LENGTH_SHORT).show();
+                                    }
 
                                 }else{
                                     Log.d(TAG, "onComplete: current location is null");
