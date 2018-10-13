@@ -1,5 +1,6 @@
 package com.mobility.a2mobilityapp.project.view;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -92,7 +93,8 @@ public class CadastroPessoaActivity extends AppCompatActivity {
                 //checando os status (true / false)
                 Boolean status = switchId.isChecked();
                 if (status == true) {
-                    setContentView(R.layout.fragment_cadastro_automovel);
+                    Intent intent = new Intent(CadastroPessoaActivity.this, CadastroAutomovelActivity.class);
+                    startActivity(intent);
                 }
             }
         });

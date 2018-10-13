@@ -1,8 +1,6 @@
 package com.mobility.a2mobilityapp;
 
 import android.Manifest;
-import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,10 +9,8 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -22,7 +18,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.LogPrinter;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -30,11 +25,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import android.support.design.widget.NavigationView;
@@ -48,9 +41,7 @@ import android.view.MenuItem;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.AutocompletePrediction;
 import com.google.android.gms.location.places.GeoDataClient;
-import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.PlaceBufferResponse;
-import com.google.android.gms.location.places.PlaceDetectionClient;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -75,46 +66,19 @@ import com.mobility.a2mobilityapp.project.services.TransporteOperation;
 import com.mobility.a2mobilityapp.project.services.UberOperation;
 import com.mobility.a2mobilityapp.project.bean.MeioTransporte;
 import com.mobility.a2mobilityapp.project.utils.FragmentList;
-import com.mobility.a2mobilityapp.project.utils.HttpDataHandler;
 
 
-import com.mobility.a2mobilityapp.project.view.CadastroAutomovelFragment;
-import com.mobility.a2mobilityapp.project.view.CadastroPessoaActivity;
 import com.mobility.a2mobilityapp.project.view.GraficoFinanceiroFragment;
 import com.mobility.a2mobilityapp.project.view.GraficoTempoFragment;
 import com.mobility.a2mobilityapp.project.view.MeusAutomoveisFragment;
 import com.mobility.a2mobilityapp.project.view.PerfilFragment;
-import com.uber.sdk.android.core.UberSdk;
-import com.uber.sdk.android.core.auth.AccessTokenManager;
-import com.uber.sdk.android.rides.RideParameters;
-import com.uber.sdk.core.auth.Scope;
-import com.uber.sdk.rides.auth.OAuth2Credentials;
-import com.uber.sdk.rides.client.CredentialsSession;
-import com.uber.sdk.rides.client.ServerTokenSession;
-import com.uber.sdk.rides.client.SessionConfiguration;
-import com.uber.sdk.rides.client.UberRidesApi;
-import com.uber.sdk.rides.client.model.Product;
-import com.uber.sdk.rides.client.model.ProductsResponse;
-import com.uber.sdk.rides.client.model.RideEstimate;
-import com.uber.sdk.rides.client.model.RideRequestParameters;
-import com.uber.sdk.rides.client.services.RidesService;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
 import com.mobility.a2mobilityapp.project.utils.PlaceAutocompleteAdapter;
-import retrofit2.Response;
 
-import static java.lang.Double.parseDouble;
-import static java.lang.Float.*;
 import static java.lang.Thread.sleep;
 
 public class MenuActivity extends AppCompatActivity

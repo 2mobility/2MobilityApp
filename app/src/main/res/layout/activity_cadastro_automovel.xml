@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/aultomovel"
+    tools:context=".project.view.CadastroAutomovelActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="right"
+        android:layout_marginEnd="20dp"
+        android:text="Automóveis"
+        android:textColor="#319a29"
+        android:textSize="30dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="102dp"
+        android:background="@color/edit_background_cinza"
+        android:ems="10"
+        android:hint="Modelo"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:textColor="@color/edit_text_branco"
+        android:textColorHint="@color/edit_hint_text_cinza" />
+
+    <EditText
+        android:id="@+id/editText13"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="169dp"
+        android:background="@color/edit_background_cinza"
+        android:ems="10"
+        android:hint="Km/litro"
+        android:inputType="numberDecimal"
+        android:paddingLeft="10dp"
+        android:textColor="@color/edit_text_branco"
+        android:textColorHint="@color/edit_hint_text_cinza" />
+
+    <EditText
+        android:id="@+id/editText18"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="237dp"
+        android:background="@color/edit_background_cinza"
+        android:ems="10"
+        android:hint="Preço"
+        android:inputType="number"
+        android:paddingLeft="10dp"
+        android:textColor="@color/edit_text_branco"
+        android:textColorHint="@color/edit_hint_text_cinza"
+        tools:layout_editor_absoluteX="14dp"
+        tools:layout_editor_absoluteY="114dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="152dp"
+        android:layout_height="43dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="215dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="#319a29"
+        android:text="CADASTRAR"
+        android:textColor="#ffffff"
+        tools:text="CADASTRAR" />
+
+
+</RelativeLayout>

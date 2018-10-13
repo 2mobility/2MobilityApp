@@ -1,37 +1,26 @@
 package com.mobility.a2mobilityapp.project.view;
 
-
 import android.graphics.Color;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.mobility.a2mobilityapp.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class CadastroAutomovelFragment extends Fragment {
+public class CadastroAutomovelActivity extends AppCompatActivity {
 
-    Button btnCadastrar;
-
-    public CadastroAutomovelFragment() {
-        // Required empty public constructor
-    }
-
+    private Button btnCadastrar;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_cadastro_automovel);
 
-        View view = inflater.inflate(R.layout.fragment_cadastro_automovel, container, false);
-
-        btnCadastrar = (Button) view.findViewById(R.id.button);
+        btnCadastrar = (Button) findViewById(R.id.button);
 
         btnCadastrar.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -45,8 +34,5 @@ public class CadastroAutomovelFragment extends Fragment {
             }
         });
 
-        return view;
-
     }
-
 }

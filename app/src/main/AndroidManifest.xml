@@ -30,22 +30,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MenuActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".LoginActivity"
             android:screenOrientation="portrait" />
-        <!--<activity
+        <!--
+            <activity
             android:name=".MenuActivity"
-            android:theme="@style/AppTheme" />-->
+            android:theme="@style/AppTheme" />
+        -->
         <activity
             android:name=".project.view.CadastroPessoaActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".project.view.SenhaActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".project.view.CadastroAutomovelActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
