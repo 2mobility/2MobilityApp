@@ -16,7 +16,8 @@
         android:layout_marginTop="17dp"
         app:srcCompat="@drawable/logo_colorido"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="16dp"
+        android:layout_marginLeft="3dp"/>
 
 
     <TextView

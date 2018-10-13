@@ -68,6 +68,7 @@ import com.mobility.a2mobilityapp.project.bean.MeioTransporte;
 import com.mobility.a2mobilityapp.project.utils.FragmentList;
 
 
+import com.mobility.a2mobilityapp.project.utils.MeusLocaisFragment;
 import com.mobility.a2mobilityapp.project.view.GraficoFinanceiroFragment;
 import com.mobility.a2mobilityapp.project.view.GraficoTempoFragment;
 import com.mobility.a2mobilityapp.project.view.MeusAutomoveisFragment;
@@ -189,7 +190,7 @@ public class MenuActivity extends AppCompatActivity
 
         touchBtnCompara();
 
-        chamaIcone();
+        locaisFavoritos();
 
     }
 
@@ -259,22 +260,15 @@ public class MenuActivity extends AppCompatActivity
         });
     }
 
-    public void chamaIcone() {
-        /*ic_localizacao_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MenuActivity.this,"FOIIIII",Toast.LENGTH_SHORT).show();
-
-            }
-        });*/
-
+    public void locaisFavoritos() {
         ic_pontos_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MenuActivity.this,"FOIIIII 2",Toast.LENGTH_SHORT).show();
-
+                openFragmentMeusLocais();
             }
         });
+
+
     }
 
 
@@ -287,6 +281,16 @@ public class MenuActivity extends AppCompatActivity
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.add(R.id.fragment_container, fragmentList, "LIST_FRAGMENT").commit();
         esconderProgressBar(findViewById(R.id.progressBar));
+    }
+
+    public void openFragmentMeusLocais(){
+        MeusLocaisFragment fragmentLocais = new MeusLocaisFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction =  fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right,
+                android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.add(R.id.fragment_container_locais, fragmentLocais, "LIST_FRAGMENT").commit();
     }
 
 

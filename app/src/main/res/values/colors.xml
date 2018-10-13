@@ -11,9 +11,9 @@
     <color name="edit_hint_text_cinza">#828282</color>
     <color name="text_background_verde">#389927</color>
     <color name="text_text_branco">#FFFFFF</color>
+    <color name="black">#000000</color>
 
 
 
-
-    <color name="texto_fundo_edit">#4F4F4F</color>
+    <color name="texto_fundo_edit">#4F4F4F</color>z
 </resources>

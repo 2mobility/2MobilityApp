@@ -103,8 +103,16 @@
                     android:layout_toRightOf="@id/edit_destino"
                     android:src="@drawable/ic_estrela"
                     android:id="@+id/ic_pontos_img"/>
-
             </RelativeLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_marginTop="125dp"
+                android:layout_marginHorizontal="20dp"
+                android:id="@+id/fragment_container_locais"
+                android:elevation="100dp"
+                />
 
             <RelativeLayout
                 android:layout_width="match_parent"
