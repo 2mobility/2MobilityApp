@@ -236,22 +236,26 @@ public class MenuActivity extends AppCompatActivity
             public void onClick(View view) {
                 runOnUiThread(new Runnable(){
                     public void run() {
-                        //Fecha o teclado apos clicar no botão
-                        ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
-                                .hideSoftInputFromWindow(enderecoInicial.getWindowToken(), 0);
+                            //Fecha o teclado apos clicar no botão
+                            ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
+                                    .hideSoftInputFromWindow(enderecoInicial.getWindowToken(), 0);
 
-                        endereco = new Endereco();
-                        endereco.setNominalPartida(enderecoInicial.getText().toString());
-                        endereco.setNominalChegada(enderecoFinal.getText().toString());
-                        chamaUber();
-                        TransporteOperation transp = new TransporteOperation();
-                        String resposta = transp.getValuesTransport(endereco);
-                        transpPublico = transp.getTransporte(resposta);
+                            endereco = new Endereco();
+                            endereco.setNominalPartida(enderecoInicial.getText().toString());
+                            endereco.setNominalChegada(enderecoFinal.getText().toString());
+                            chamaUber();
+                            TransporteOperation transp = new TransporteOperation();
+                            String resposta = transp.getValuesTransport(endereco);
+                            transpPublico = transp.getTransporte(resposta);
 
-                        ParticularOperation part = new ParticularOperation();
-                        particular = part.getParticular();
-
-                        openFragment();
+                            ParticularOperation part = new ParticularOperation();
+                            particular = part.getParticular();
+                        try{
+                            openFragment();
+                        }catch (Exception e){
+                            esconderProgressBar(findViewById(R.id.progressBar));
+                            Toast.makeText(MenuActivity.this,"Local não encontrado(s).",Toast.LENGTH_LONG).show();
+                        }
                     }
                 });      
             }

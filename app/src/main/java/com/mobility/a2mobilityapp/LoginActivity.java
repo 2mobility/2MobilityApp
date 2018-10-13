@@ -25,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     Button btnCadastrar;
     Button btnEntrar;
     TextView txtEsqueceuSenha;
+    private TextView campoLogin;
+    private TextView campoSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
+        campoSenha = (TextView) findViewById(R.id.editSenha);
+        campoLogin = (TextView) findViewById(R.id.editUsuario);
 
         btnCadastrar.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -98,10 +102,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         btnEntrar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                        startActivity(intent);
+            @Override
+            public void onClick(View view) {
+                if(!campoSenha.getText().toString().equals("") && !campoLogin.getText().toString().equals("")){
+                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(LoginActivity.this,"Existem campos a serem preenchidos.",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

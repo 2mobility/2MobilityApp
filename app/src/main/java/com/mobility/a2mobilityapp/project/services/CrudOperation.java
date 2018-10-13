@@ -11,7 +11,7 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 
-public class ApiService {
+public class CrudOperation {
 
 	private static final String url = "";
 	
