@@ -83,7 +83,7 @@ import com.mobility.a2mobilityapp.project.utils.PlaceAutocompleteAdapter;
 import static java.lang.Thread.sleep;
 
 public class MenuActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, FragmentList.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
 
     //----Google API
     private static final String TAG = "Map";
@@ -273,7 +273,8 @@ public class MenuActivity extends AppCompatActivity
 
 
     public void openFragment(){
-        FragmentList fragmentList = FragmentList.newInstance("1", "2",uber,transpPublico,particular);
+        FragmentList fragmentList = FragmentList.newInstance(enderecoInicial.getText().toString(), enderecoFinal.getText().toString()
+                ,uber,transpPublico,particular);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction =  fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right,
@@ -305,10 +306,6 @@ public class MenuActivity extends AppCompatActivity
         });
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 
     @Override
     public void onBackPressed() {
