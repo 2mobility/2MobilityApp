@@ -1,0 +1,351 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:2:1-60:12
+MERGED from [com.android.support:design:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\99321f1db705fbd57fcb92de07789f50\AndroidManifest.xml:17:1-31:12
+MERGED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:23:1-43:12
+MERGED from [com.uber.sdk:core-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\core-android-0.5.3.aar\1f35a431c939803a75312955f11acefa\AndroidManifest.xml:23:1-39:12
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\773b1d19f9e728e090f34c27210bb4b6\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\8f21cf4dabfa47790f9c9d07f6c93e5d\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:transition:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\60efcf9b3a36b40c6b203ed0181b693c\AndroidManifest.xml:17:1-28:12
+MERGED from [com.google.android.gms:play-services-places:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-places-12.0.0.aar\476e1f5e223aa120381f3c142e06b500\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-maps:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-maps-12.0.0.aar\70fe7388549a13a305bfef10b4aa0752\AndroidManifest.xml:17:1-32:12
+MERGED from [com.google.android.gms:play-services-location:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-location-12.0.0.aar\fda039c73304b47fefbc42f35ff30022\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-base:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.0.aar\c2cf05fefdc34292a974f15c623bab28\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-tasks-12.0.0.aar\482b2fdbb0327775b5cc450f79e08ff6\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.0.aar\7491102a4a2eae6c70d4625331bc04b2\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\f4a0be2d5d6dca1715f3d92fc8f4d8f4\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\730b70bfdc7e2436cb8ed619d282eb1e\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\b93b141a851ca30f19e1fef4e260237b\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\3801ec99ffa4cbcb044e1b421620b3df\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\2bba7b89e37aa22cd58b0f25c438abea\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\be0ce2d263294253eb404b6bdb130147\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\3123f44e2ce6036a4d8ddbba2c893123\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\22902fb477d78a4bd219ffef88c4df44\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\7e879091f4b3501374305078a5953079\AndroidManifest.xml:17:1-31:12
+MERGED from [com.google.android.gms:play-services-maps-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-maps-license-12.0.0.aar\e7e534fc30aaded5a1cc9596f5f3fd97\AndroidManifest.xml:2:1-8:12
+MERGED from [com.google.android.gms:play-services-places-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-places-license-12.0.0.aar\d74f3e651c331c48ff597d1ba53429d9\AndroidManifest.xml:2:1-8:12
+MERGED from [com.google.android.gms:play-services-location-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-location-license-12.0.0.aar\900ccfcab89f6269fcdaf99ab9157428\AndroidManifest.xml:2:1-8:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\0f607826b00aa8a04ebf196d9514a776\AndroidManifest.xml:17:1-30:12
+MERGED from [com.google.android.gms:play-services-base-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-base-license-12.0.0.aar\a96c7405ea0207d3e20a424d75dbc8c1\AndroidManifest.xml:2:1-8:12
+MERGED from [com.google.android.gms:play-services-basement-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-12.0.0.aar\0198204be0e2c4250f6d4245d87263cc\AndroidManifest.xml:2:1-8:12
+MERGED from [com.google.android.gms:play-services-tasks-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-12.0.0.aar\a797a7c1db95fa798a8e2e3aca43cea2\AndroidManifest.xml:2:1-8:12
+INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:2:1-60:12
+	package
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:3:5-41
+		INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:2:1-60:12
+		INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:2:1-60:12
+		INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:5:5-67
+MERGED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:30:5-67
+MERGED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:30:5-67
+MERGED from [com.uber.sdk:core-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\core-android-0.5.3.aar\1f35a431c939803a75312955f11acefa\AndroidManifest.xml:30:5-67
+MERGED from [com.uber.sdk:core-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\core-android-0.5.3.aar\1f35a431c939803a75312955f11acefa\AndroidManifest.xml:30:5-67
+MERGED from [com.google.android.gms:play-services-maps:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-maps-12.0.0.aar\70fe7388549a13a305bfef10b4aa0752\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-maps-12.0.0.aar\70fe7388549a13a305bfef10b4aa0752\AndroidManifest.xml:24:5-67
+	android:name
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:5:22-64
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:6:5-79
+MERGED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:29:5-79
+MERGED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:29:5-79
+MERGED from [com.uber.sdk:core-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\core-android-0.5.3.aar\1f35a431c939803a75312955f11acefa\AndroidManifest.xml:29:5-79
+MERGED from [com.uber.sdk:core-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\core-android-0.5.3.aar\1f35a431c939803a75312955f11acefa\AndroidManifest.xml:29:5-79
+	android:name
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:6:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:7:22-78
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:8:5-79
+MERGED from [com.google.android.gms:play-services-maps:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-maps-12.0.0.aar\70fe7388549a13a305bfef10b4aa0752\AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-maps:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-maps-12.0.0.aar\70fe7388549a13a305bfef10b4aa0752\AndroidManifest.xml:23:5-79
+	android:name
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:8:22-76
+application
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:10:5-58:19
+MERGED from [com.android.support:design:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\99321f1db705fbd57fcb92de07789f50\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:design:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\99321f1db705fbd57fcb92de07789f50\AndroidManifest.xml:25:5-29:19
+MERGED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:32:5-41:19
+MERGED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:32:5-41:19
+MERGED from [com.uber.sdk:core-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\core-android-0.5.3.aar\1f35a431c939803a75312955f11acefa\AndroidManifest.xml:32:5-37:19
+MERGED from [com.uber.sdk:core-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\core-android-0.5.3.aar\1f35a431c939803a75312955f11acefa\AndroidManifest.xml:32:5-37:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\773b1d19f9e728e090f34c27210bb4b6\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\773b1d19f9e728e090f34c27210bb4b6\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\8f21cf4dabfa47790f9c9d07f6c93e5d\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\8f21cf4dabfa47790f9c9d07f6c93e5d\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:transition:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\60efcf9b3a36b40c6b203ed0181b693c\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\60efcf9b3a36b40c6b203ed0181b693c\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-places:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-places-12.0.0.aar\476e1f5e223aa120381f3c142e06b500\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-places-12.0.0.aar\476e1f5e223aa120381f3c142e06b500\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-maps:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-maps-12.0.0.aar\70fe7388549a13a305bfef10b4aa0752\AndroidManifest.xml:30:5-20
+MERGED from [com.google.android.gms:play-services-maps:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-maps-12.0.0.aar\70fe7388549a13a305bfef10b4aa0752\AndroidManifest.xml:30:5-20
+MERGED from [com.google.android.gms:play-services-location:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-location-12.0.0.aar\fda039c73304b47fefbc42f35ff30022\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-location-12.0.0.aar\fda039c73304b47fefbc42f35ff30022\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-base:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.0.aar\c2cf05fefdc34292a974f15c623bab28\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.0.aar\c2cf05fefdc34292a974f15c623bab28\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-tasks-12.0.0.aar\482b2fdbb0327775b5cc450f79e08ff6\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-tasks-12.0.0.aar\482b2fdbb0327775b5cc450f79e08ff6\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.0.aar\7491102a4a2eae6c70d4625331bc04b2\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.0.aar\7491102a4a2eae6c70d4625331bc04b2\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\f4a0be2d5d6dca1715f3d92fc8f4d8f4\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\f4a0be2d5d6dca1715f3d92fc8f4d8f4\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\730b70bfdc7e2436cb8ed619d282eb1e\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\730b70bfdc7e2436cb8ed619d282eb1e\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\b93b141a851ca30f19e1fef4e260237b\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\b93b141a851ca30f19e1fef4e260237b\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\3801ec99ffa4cbcb044e1b421620b3df\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\3801ec99ffa4cbcb044e1b421620b3df\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\2bba7b89e37aa22cd58b0f25c438abea\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\2bba7b89e37aa22cd58b0f25c438abea\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\be0ce2d263294253eb404b6bdb130147\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\be0ce2d263294253eb404b6bdb130147\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\3123f44e2ce6036a4d8ddbba2c893123\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\3123f44e2ce6036a4d8ddbba2c893123\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\22902fb477d78a4bd219ffef88c4df44\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\22902fb477d78a4bd219ffef88c4df44\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\7e879091f4b3501374305078a5953079\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\7e879091f4b3501374305078a5953079\AndroidManifest.xml:25:5-29:19
+MERGED from [com.google.android.gms:play-services-maps-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-maps-license-12.0.0.aar\e7e534fc30aaded5a1cc9596f5f3fd97\AndroidManifest.xml:5:5-6:19
+MERGED from [com.google.android.gms:play-services-maps-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-maps-license-12.0.0.aar\e7e534fc30aaded5a1cc9596f5f3fd97\AndroidManifest.xml:5:5-6:19
+MERGED from [com.google.android.gms:play-services-places-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-places-license-12.0.0.aar\d74f3e651c331c48ff597d1ba53429d9\AndroidManifest.xml:5:5-6:19
+MERGED from [com.google.android.gms:play-services-places-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-places-license-12.0.0.aar\d74f3e651c331c48ff597d1ba53429d9\AndroidManifest.xml:5:5-6:19
+MERGED from [com.google.android.gms:play-services-location-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-location-license-12.0.0.aar\900ccfcab89f6269fcdaf99ab9157428\AndroidManifest.xml:5:5-6:19
+MERGED from [com.google.android.gms:play-services-location-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-location-license-12.0.0.aar\900ccfcab89f6269fcdaf99ab9157428\AndroidManifest.xml:5:5-6:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\0f607826b00aa8a04ebf196d9514a776\AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\0f607826b00aa8a04ebf196d9514a776\AndroidManifest.xml:24:5-28:19
+MERGED from [com.google.android.gms:play-services-base-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-base-license-12.0.0.aar\a96c7405ea0207d3e20a424d75dbc8c1\AndroidManifest.xml:5:5-6:19
+MERGED from [com.google.android.gms:play-services-base-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-base-license-12.0.0.aar\a96c7405ea0207d3e20a424d75dbc8c1\AndroidManifest.xml:5:5-6:19
+MERGED from [com.google.android.gms:play-services-basement-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-12.0.0.aar\0198204be0e2c4250f6d4245d87263cc\AndroidManifest.xml:5:5-6:19
+MERGED from [com.google.android.gms:play-services-basement-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-12.0.0.aar\0198204be0e2c4250f6d4245d87263cc\AndroidManifest.xml:5:5-6:19
+MERGED from [com.google.android.gms:play-services-tasks-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-12.0.0.aar\a797a7c1db95fa798a8e2e3aca43cea2\AndroidManifest.xml:5:5-6:19
+MERGED from [com.google.android.gms:play-services-tasks-license:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-12.0.0.aar\a797a7c1db95fa798a8e2e3aca43cea2\AndroidManifest.xml:5:5-6:19
+	android:supportsRtl
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:16:9-35
+	android:label
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:14:9-41
+	android:roundIcon
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:15:9-54
+	android:icon
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:13:9-47
+	android:allowBackup
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:12:9-35
+	android:theme
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:17:9-40
+	android:name
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:11:9-54
+meta-data#com.google.android.geo.API_KEY
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:18:9-20:71
+	android:value
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:20:13-68
+	android:name
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:19:13-58
+meta-data#com.google.android.gms.version
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.0.aar\7491102a4a2eae6c70d4625331bc04b2\AndroidManifest.xml:23:9-25:69
+MERGED from [com.google.android.gms:play-services-basement:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.0.aar\7491102a4a2eae6c70d4625331bc04b2\AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:22:13-58
+activity#com.mobility.a2mobilityapp.MainActivity
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:25:9-33:20
+	android:screenOrientation
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:27:13-49
+	android:name
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:26:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:28:13-32:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:29:17-69
+	android:name
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:29:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:31:17-77
+	android:name
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:31:27-74
+activity#com.mobility.a2mobilityapp.MenuActivity
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:34:9-36:52
+	android:screenOrientation
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:36:13-49
+	android:name
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:35:13-41
+activity#com.mobility.a2mobilityapp.LoginActivity
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:37:9-39:52
+	android:screenOrientation
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:39:13-49
+	android:name
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:38:13-42
+activity#com.mobility.a2mobilityapp.project.view.CadastroPessoaActivity
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:45:9-47:52
+	android:screenOrientation
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:47:13-49
+	android:name
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:46:13-64
+activity#com.mobility.a2mobilityapp.project.view.SenhaActivity
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:48:9-50:52
+	android:screenOrientation
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:50:13-49
+	android:name
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:49:13-55
+activity#com.mobility.a2mobilityapp.project.view.CadastroAutomovelFragment
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:51:9-53:52
+	android:screenOrientation
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:53:13-49
+	android:name
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:52:13-67
+activity#com.mobility.a2mobilityapp.project.view.CadastroAutomovelActivity
+ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:54:9-57:56
+	android:label
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:56:13-70
+	android:theme
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:57:13-44
+	android:name
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:55:13-67
+uses-sdk
+INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:design:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\99321f1db705fbd57fcb92de07789f50\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:design:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\99321f1db705fbd57fcb92de07789f50\AndroidManifest.xml:21:5-23:62
+MERGED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:27:5-44
+MERGED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:27:5-44
+MERGED from [com.uber.sdk:core-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\core-android-0.5.3.aar\1f35a431c939803a75312955f11acefa\AndroidManifest.xml:27:5-44
+MERGED from [com.uber.sdk:core-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\core-android-0.5.3.aar\1f35a431c939803a75312955f11acefa\AndroidManifest.xml:27:5-44
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\773b1d19f9e728e090f34c27210bb4b6\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\773b1d19f9e728e090f34c27210bb4b6\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\8f21cf4dabfa47790f9c9d07f6c93e5d\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\8f21cf4dabfa47790f9c9d07f6c93e5d\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:transition:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\60efcf9b3a36b40c6b203ed0181b693c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\60efcf9b3a36b40c6b203ed0181b693c\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-places-12.0.0.aar\476e1f5e223aa120381f3c142e06b500\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-places-12.0.0.aar\476e1f5e223aa120381f3c142e06b500\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-maps-12.0.0.aar\70fe7388549a13a305bfef10b4aa0752\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-maps-12.0.0.aar\70fe7388549a13a305bfef10b4aa0752\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-location:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-location-12.0.0.aar\fda039c73304b47fefbc42f35ff30022\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-location-12.0.0.aar\fda039c73304b47fefbc42f35ff30022\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.0.aar\c2cf05fefdc34292a974f15c623bab28\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.0.aar\c2cf05fefdc34292a974f15c623bab28\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-tasks-12.0.0.aar\482b2fdbb0327775b5cc450f79e08ff6\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-tasks-12.0.0.aar\482b2fdbb0327775b5cc450f79e08ff6\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.0.aar\7491102a4a2eae6c70d4625331bc04b2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.0.aar\7491102a4a2eae6c70d4625331bc04b2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\f4a0be2d5d6dca1715f3d92fc8f4d8f4\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\f4a0be2d5d6dca1715f3d92fc8f4d8f4\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\730b70bfdc7e2436cb8ed619d282eb1e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\730b70bfdc7e2436cb8ed619d282eb1e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\b93b141a851ca30f19e1fef4e260237b\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\b93b141a851ca30f19e1fef4e260237b\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\3801ec99ffa4cbcb044e1b421620b3df\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\3801ec99ffa4cbcb044e1b421620b3df\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\2bba7b89e37aa22cd58b0f25c438abea\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\2bba7b89e37aa22cd58b0f25c438abea\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\be0ce2d263294253eb404b6bdb130147\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\be0ce2d263294253eb404b6bdb130147\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\3123f44e2ce6036a4d8ddbba2c893123\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\3123f44e2ce6036a4d8ddbba2c893123\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\22902fb477d78a4bd219ffef88c4df44\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\22902fb477d78a4bd219ffef88c4df44\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\7e879091f4b3501374305078a5953079\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\7e879091f4b3501374305078a5953079\AndroidManifest.xml:21:5-23:58
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\0f607826b00aa8a04ebf196d9514a776\AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\0f607826b00aa8a04ebf196d9514a776\AndroidManifest.xml:20:5-22:41
+INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\99321f1db705fbd57fcb92de07789f50\AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\99321f1db705fbd57fcb92de07789f50\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\773b1d19f9e728e090f34c27210bb4b6\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\773b1d19f9e728e090f34c27210bb4b6\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:transition:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\60efcf9b3a36b40c6b203ed0181b693c\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\60efcf9b3a36b40c6b203ed0181b693c\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\f4a0be2d5d6dca1715f3d92fc8f4d8f4\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\f4a0be2d5d6dca1715f3d92fc8f4d8f4\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\730b70bfdc7e2436cb8ed619d282eb1e\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\730b70bfdc7e2436cb8ed619d282eb1e\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\b93b141a851ca30f19e1fef4e260237b\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\b93b141a851ca30f19e1fef4e260237b\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\3801ec99ffa4cbcb044e1b421620b3df\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\3801ec99ffa4cbcb044e1b421620b3df\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\2bba7b89e37aa22cd58b0f25c438abea\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\2bba7b89e37aa22cd58b0f25c438abea\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\be0ce2d263294253eb404b6bdb130147\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\be0ce2d263294253eb404b6bdb130147\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\3123f44e2ce6036a4d8ddbba2c893123\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\3123f44e2ce6036a4d8ddbba2c893123\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\22902fb477d78a4bd219ffef88c4df44\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\22902fb477d78a4bd219ffef88c4df44\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\7e879091f4b3501374305078a5953079\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\7e879091f4b3501374305078a5953079\AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:design:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\99321f1db705fbd57fcb92de07789f50\AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:design:26.1.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\99321f1db705fbd57fcb92de07789f50\AndroidManifest.xml:27:13-51
+activity#com.uber.sdk.android.rides.RideRequestActivity
+ADDED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:33:9-36:52
+	android:screenOrientation
+		ADDED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:36:13-49
+	android:exported
+		ADDED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:35:13-37
+	android:name
+		ADDED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:34:13-74
+activity#com.uber.sdk.android.core.auth.LoginActivity
+ADDED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:37:9-40:52
+MERGED from [com.uber.sdk:core-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\core-android-0.5.3.aar\1f35a431c939803a75312955f11acefa\AndroidManifest.xml:33:9-36:52
+MERGED from [com.uber.sdk:core-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\core-android-0.5.3.aar\1f35a431c939803a75312955f11acefa\AndroidManifest.xml:33:9-36:52
+	android:screenOrientation
+		ADDED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:40:13-49
+	android:exported
+		ADDED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:39:13-37
+	android:name
+		ADDED from [com.uber.sdk:rides-android:0.5.3] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\rides-android-0.5.3.aar\4448f1207b7425ed16419a07604b2e79\AndroidManifest.xml:38:13-72
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-maps-12.0.0.aar\70fe7388549a13a305bfef10b4aa0752\AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-maps-12.0.0.aar\70fe7388549a13a305bfef10b4aa0752\AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-maps-12.0.0.aar\70fe7388549a13a305bfef10b4aa0752\AndroidManifest.xml:28:9-32
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.0.aar\c2cf05fefdc34292a974f15c623bab28\AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.0.aar\c2cf05fefdc34292a974f15c623bab28\AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.0.aar\c2cf05fefdc34292a974f15c623bab28\AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:12.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.0.aar\c2cf05fefdc34292a974f15c623bab28\AndroidManifest.xml:24:13-79
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+IMPLIED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:2:1-60:12 reason: com.google.android.gms.license has a targetSdkVersion < 4
+uses-permission#android.permission.READ_PHONE_STATE
+IMPLIED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:2:1-60:12 reason: com.google.android.gms.license has a targetSdkVersion < 4
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+IMPLIED from C:\Users\limjo15\Desktop\TCC_FINAL\2MobilityApp-Jean (4)\2MobilityApp-Jean\app\src\main\AndroidManifest.xml:2:1-60:12 reason: com.google.android.gms.license requested WRITE_EXTERNAL_STORAGE
+meta-data#android.arch.lifecycle.VERSION
+ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\0f607826b00aa8a04ebf196d9514a776\AndroidManifest.xml:25:9-27:47
+	android:value
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\0f607826b00aa8a04ebf196d9514a776\AndroidManifest.xml:27:13-44
+	android:name
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\limjo15\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\0f607826b00aa8a04ebf196d9514a776\AndroidManifest.xml:26:13-58

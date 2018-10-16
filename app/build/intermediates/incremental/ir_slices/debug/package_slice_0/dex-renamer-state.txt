@@ -1,0 +1,4 @@
+#Mon Oct 15 13:43:58 BRT 2018
+base.0=C\:\\Users\\limjo15\\Desktop\\TCC_FINAL\\2MobilityApp-Jean (4)\\2MobilityApp-Jean\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex
