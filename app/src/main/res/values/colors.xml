@@ -6,5 +6,14 @@
     <color name="white">#FFFFFF</color>
     <color name="icones_mapa">#E0E0E0</color>
     <color name="fundo_cinza">#1C1C1C</color>
-    <color name="texto_fundo_edit">#4F4F4F</color>
+    <color name="edit_background_cinza">#2B2B2B</color>
+    <color name="edit_text_branco">#FFFFFF</color>
+    <color name="edit_hint_text_cinza">#828282</color>
+    <color name="text_background_verde">#389927</color>
+    <color name="text_text_branco">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+
+
+    <color name="texto_fundo_edit">#4F4F4F</color>z
 </resources>

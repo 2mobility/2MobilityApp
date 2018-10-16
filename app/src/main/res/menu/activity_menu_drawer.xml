@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_mapa"
+            android:icon="@drawable/ic_mapa"
+            android:title="Mapa" />
+        <item
+            android:id="@+id/nav_perfil"
+            android:icon="@drawable/ic_perfil"
+            android:title="Perfil" />
+        <item
+            android:id="@+id/nav_automovel"
+            android:icon="@drawable/ic_automovel"
+            android:title="Automóvel" />
+        <item
+            android:id="@+id/nav_grafico_tempo"
+            android:icon="@drawable/ic_tempo"
+            android:title="Gráfico de Tempo" />
+        <item
+            android:id="@+id/nav_grafico_custo"
+            android:icon="@drawable/ic_custo"
+            android:title="Gráfico de Custo" />
+    </group>
+
+    <!--<item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>-->
+
+</menu>
