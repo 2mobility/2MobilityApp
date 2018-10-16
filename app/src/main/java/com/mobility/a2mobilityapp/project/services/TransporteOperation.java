@@ -14,6 +14,8 @@ import org.json.JSONObject;
 
 public class TransporteOperation {
 
+    String preco = "";
+
     private static final String API_KEY="AIzaSyDMJL4Q-GJD2FVVAb6gTgLtJsI7iIXTUos";
 
     public String getValuesTransport(Endereco endereco){
@@ -47,12 +49,22 @@ public class TransporteOperation {
             transporte.setDistancia(distancia);
             transporte.setTempo(tempo);
 
+            //variavel para verificar se existe transporte publico disponível
+            preco = valor;
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         return transporte;
+    }
 
+    public boolean possuiTransporte(){
+        if(preco.equals("")){
+            return false;
+        }
+        preco = "";
+        return true;
     }
 
 }

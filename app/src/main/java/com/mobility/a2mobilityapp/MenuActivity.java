@@ -135,6 +135,8 @@ public class MenuActivity extends AppCompatActivity
     double latitudeAtual = 0;
     double longitudeAtual = 0;
 
+    boolean possuiTransportePublico = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -215,6 +217,10 @@ public class MenuActivity extends AppCompatActivity
 
                             ParticularOperation part = new ParticularOperation();
                             particular = part.getParticular();
+
+                            //variavel para controle de existencia de rota de transporte publico
+                            possuiTransportePublico = transp.possuiTransporte();
+
                         try{
                             openFragment();
                         }catch (Exception e){
@@ -274,7 +280,7 @@ public class MenuActivity extends AppCompatActivity
 
     public void openFragment(){
         FragmentList fragmentList = FragmentList.newInstance(enderecoInicial.getText().toString(), enderecoFinal.getText().toString()
-                ,uber,transpPublico,particular);
+                ,uber,transpPublico,particular,possuiTransportePublico);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction =  fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right,

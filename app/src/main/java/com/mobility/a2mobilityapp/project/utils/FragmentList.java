@@ -37,13 +37,15 @@ public class FragmentList extends Fragment {
 
     private static String enderecoOrigem;
     private static String enderecoDestino;
+    private static boolean possuiTransportePublico2;
 
     public FragmentList() {
         // Required empty public constructor
     }
 
 
-    public static FragmentList newInstance(String enderecoInicial, String enderecoFinal, Uber[] uber, TransportePublico transportePublico, Particular particular) {
+    public static FragmentList newInstance(String enderecoInicial, String enderecoFinal, Uber[] uber,
+                                           TransportePublico transportePublico, Particular particular, boolean possuiTransportePublico) {
         FragmentList fragment = new FragmentList();
 
         //Transporte publico
@@ -85,6 +87,7 @@ public class FragmentList extends Fragment {
 
         enderecoOrigem = enderecoInicial.toString();
         enderecoDestino = enderecoFinal.toString();
+        possuiTransportePublico2 = possuiTransportePublico;
 
         return fragment;
     }
@@ -140,7 +143,7 @@ public class FragmentList extends Fragment {
         androidListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                if(position == 0){
+                if((position == 0) && (possuiTransportePublico2 == true)){
                     Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                     Uri.parse("http://maps.google.com/maps?saddr=" + enderecoOrigem + "&daddr=" + enderecoDestino));
                     startActivity(intent);

@@ -38,4 +38,5 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.3.1'
     implementation files('libs/MPAndroidChart-v3.0.1.jar')
     implementation files('libs/MPAndroidChart-v3.0.1.jar')
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.1.+'
 }
