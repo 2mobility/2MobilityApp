@@ -1,13 +1,16 @@
 package com.mobility.a2mobilityapp.project.utils;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.mobility.a2mobilityapp.R;
 import com.mobility.a2mobilityapp.project.bean.MeioTransporte;
@@ -53,5 +56,4 @@ public class MeusLocaisFragment extends Fragment {
 
         return view;
     }
-
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/list_view_locais"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -15,7 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:onClick="onClickClearDestinoCasa"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,7 +65,8 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="-45dp"
                     android:src="@drawable/ic_clear"
-                    android:id="@+id/clear_casa"/>
+                    android:id="@+id/clear_casa"
+                    android:onClick="onClickClearCasa"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -90,7 +93,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:onClick="onClickClearDestinoTrabalho"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -135,7 +139,8 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="-45dp"
                     android:src="@drawable/ic_clear"
-                    android:id="@+id/clear_trabalho"/>
+                    android:id="@+id/clear_trabalho"
+                    android:onClick="onClickClearTrabalho"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -154,7 +159,8 @@
             android:layout_height="40dp"
             android:background="#319a29"
             android:text="SALVAR"
-            android:textColor="#ffffff"/>
+            android:textColor="#ffffff"
+            android:onClick="onClickSalvarLocal"/>
     </LinearLayout>
 
 </LinearLayout>

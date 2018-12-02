@@ -19,12 +19,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -71,6 +73,7 @@ import com.mobility.a2mobilityapp.project.utils.FragmentList;
 import com.mobility.a2mobilityapp.project.utils.MeusLocaisFragment;
 import com.mobility.a2mobilityapp.project.view.GraficoFinanceiroFragment;
 import com.mobility.a2mobilityapp.project.view.GraficoTempoFragment;
+import com.mobility.a2mobilityapp.project.view.LocaisAdapterFragment;
 import com.mobility.a2mobilityapp.project.view.MeusAutomoveisFragment;
 import com.mobility.a2mobilityapp.project.view.PerfilFragment;
 
@@ -300,6 +303,31 @@ public class MenuActivity extends AppCompatActivity
         fragmentTransaction.add(R.id.fragment_container_locais, fragmentLocais, "LIST_FRAGMENT").commit();
     }
 
+    //métodos de ação para os botões de locais favoritos
+    public void onClickSalvarLocal(View v)
+    {
+        Toast.makeText(this,"Salvar Local", Toast.LENGTH_LONG).show();
+    }
+
+    public void onClickClearCasa(View v)
+    {
+        Toast.makeText(this,"Limpar Edit casa", Toast.LENGTH_LONG).show();
+    }
+
+    public void onClickClearTrabalho(View v)
+    {
+        Toast.makeText(this,"Limpar Edit trabalho", Toast.LENGTH_LONG).show();
+    }
+
+    public void onClickClearDestinoCasa(View v)
+    {
+        Toast.makeText(this,"Escolhido Casa como destino", Toast.LENGTH_LONG).show();
+    }
+
+    public void onClickClearDestinoTrabalho(View v)
+    {
+        Toast.makeText(this,"Escolhido Trabalho como destino", Toast.LENGTH_LONG).show();
+    }
 
     public void chamaUber(){
         runOnUiThread(new Runnable(){
